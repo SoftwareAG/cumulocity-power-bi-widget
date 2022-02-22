@@ -1,0 +1,31 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "es6",
+    "module": "esnext",
+    "typeRoots": ["node_modules/@types"],
+    "lib": [
+      "es2018",
+      "dom"
+    ],
+    "paths": {
+      "gp-powerbi-widget": [
+        "dist/gp-powerbi-widget/gp-powerbi-widget",
+        "dist/gp-powerbi-widget"
+      ]
+    }
+  },
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true,
+    "enableIvy": false
+  }
+}
