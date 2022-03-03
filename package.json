@@ -11,7 +11,8 @@
     "buildPatch": "cd projects/gp-powerbi-widget && npm version patch && ng build gp-powerbi-widget && cd ../../dist/gp-powerbi-widget && npm pack && move *.tgz ../",
     "buildMinor": "cd projects/gp-powerbi-widget && npm version minor && ng build gp-powerbi-widget && cd ../../dist/gp-powerbi-widget && npm pack && move *.tgz ../",
     "buildMajor": "cd projects/gp-powerbi-widget && npm version major && ng build gp-powerbi-widget && cd ../../dist/gp-powerbi-widget && npm pack && move *.tgz ../",
-    "serve": "ng build gp-powerbi-widget && npm i dist/gp-powerbi-widget && ng s"
+    "serve": "ng build gp-powerbi-widget && npm i dist/gp-powerbi-widget && ng s",
+    "runtime": "gulp --gulpfile ./runtime/gulpfile.js"
   },
   "private": true,
   "dependencies": {
@@ -28,6 +29,9 @@
     "@c8y/ng1-modules": "^1011.0.12",
     "@c8y/ngx-components": "^1011.0.12",
     "@c8y/style": "^1011.0.12",
+    "app-constants": "^1.0.0",
+    "app-utils": "^0.1.0",
+    "powerbi-client": "^2.19.1",
     "rxjs": "~6.6.3",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"

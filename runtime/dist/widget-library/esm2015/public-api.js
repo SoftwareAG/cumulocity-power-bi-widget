@@ -1,0 +1,7 @@
+/*
+ * Public API Surface of gp-powerbi-widget
+ */
+// export * from './lib/gp-powerbi-widget.service';
+// export * from './lib/gp-powerbi-widget.component';
+export * from './lib/gp-powerbi-widget.module';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHVibGljLWFwaS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3Byb2plY3RzL2dwLXBvd2VyYmktd2lkZ2V0L3NyYy9wdWJsaWMtYXBpLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBOztHQUVHO0FBRUgsbURBQW1EO0FBQ25ELHFEQUFxRDtBQUNyRCxjQUFjLGdDQUFnQyxDQUFDIiwic291cmNlc0NvbnRlbnQiOlsiLypcbiAqIFB1YmxpYyBBUEkgU3VyZmFjZSBvZiBncC1wb3dlcmJpLXdpZGdldFxuICovXG5cbi8vIGV4cG9ydCAqIGZyb20gJy4vbGliL2dwLXBvd2VyYmktd2lkZ2V0LnNlcnZpY2UnO1xuLy8gZXhwb3J0ICogZnJvbSAnLi9saWIvZ3AtcG93ZXJiaS13aWRnZXQuY29tcG9uZW50JztcbmV4cG9ydCAqIGZyb20gJy4vbGliL2dwLXBvd2VyYmktd2lkZ2V0Lm1vZHVsZSc7XG4iXX0=

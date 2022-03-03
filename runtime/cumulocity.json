@@ -1,0 +1,17 @@
+{
+  "name": "Power BI Widget",
+  "contextPath": "powerbi-runtime-widget",
+  "key": "powerbi-runtime-widget-application-key",
+  "contentSecurityPolicy": "default-src 'self'",
+  "icon": {
+    "class": "fa fa-overview"
+  },
+  "manifest": {
+    "noAppSwitcher": true,
+    "requiredPlatformVersion": ">=1011.0.0",
+    "version":"1.0.0",
+    "author":"Software AG, Global Presales",
+    "description": "This is an Angular 11 widget, which is designed to display the reports from Power BI",
+    "license": "Apache 2.0"
+  }
+}

@@ -1,0 +1,25 @@
+Hello Power BI
+<div>
+  <lib-gp-powerbi-config></lib-gp-powerbi-config>
+</div>
+<div class="card content-fullpage" >
+    <div class="d-flex d-col inner-scroll fit-h">
+    <div class="card-header separator sticky-top">
+        <h4>
+				<!-- We are doing some decoding of the report name due to the way we store the report name in the application 
+					Decoding may not be needed -->
+            <!-- {{
+          AppUtils.decodeUriComponent(reportName) !== reportName ?
+            AppUtils.decodeUriComponent(reportName) :
+            reportName
+            }} -->
+            Power Bi Report
+        </h4>
+    </div>
+    <div class="flex-grow p-16">
+      <div class="powerbi-report" id="reportContainer" #reportContainer>
+        <c8y-loading></c8y-loading>
+      </div>
+    </div>
+    </div>
+</div>
