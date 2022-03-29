@@ -9,9 +9,28 @@
   "manifest": {
     "noAppSwitcher": true,
     "requiredPlatformVersion": ">=1011.0.0",
-    "version":"1.0.0",
-    "author":"Software AG, Global Presales",
+    "version": "1.0.0",
+    "author": "Software AG, Global Presales",
     "description": "This is an Angular 11 widget, which is designed to display the reports from Power BI",
     "license": "Apache 2.0"
+  },
+  "i18nExtra": {
+    "ko_KR": {
+      "\"{{An error occurred while fetching the embedding token for the report. | translate}}\" ": "\"{{보고서에 포함되는 토큰을 가져오는 동안 오류가 발생 |했습니다. 번역}\" ",
+      "\"{{Fetching reports for workspace failed. | translate}}\" ": "\"{{작업 영역에 대한 보고서 가져오기 실패 |. 번역}\" ",
+      "\"{{An error occurred while fetching reports of workspace. Try again.. | translate}}\" ": "\"{{작업 영역의 보고서를 가져오는 동안 오류가 발생했습니다. 다시 한 번 시도해 보세요.. | 번역}\" ",
+      "\"{{Failed to fetch embedding token. | translate}}\" ": "\"{{포함 토큰을 가져오지 못했습니다 |. 번역}\" ",
+      "\"{{Error in payload. | translate}}\" ": "\"{{페이로드오류 |. 번역}\" ",
+      "\"{{Failed to load report. | translate}}\" ": "\"{{보고서를 로드하지 못했습니다 |. 번역}\" ",
+      "\"{{DataHub URL | translate}}\" ": "\"{{데이터허브 URL | 번역}\" ",
+      "\"{{Power BI URL | translate}}\" ": "\"{{전원 BI URL | 번역}\" ",
+      "\"{{Fetch Data | translate}}\" ": "\"{{가져오기 데이터 | 번역}\" ",
+      "\"{{Filter Pane | translate}}\" ": "\"{{필터 창 | 번역}\" ",
+      "\"{{Nav Pane | translate}}\" ": "\"{{nav Pane | 번역}\" ",
+      "\"{{Select the workspace you want to access. | translate}}\" ": "\"{{액세스하려는 작업 영역을 선택합니다 |. 번역}\" ",
+      "\"{{Select a report from the selected workspace. | translate}}\" ": "\"{{선택한 작업 영역에서 보고서를 선택 |합니다. 번역}\" ",
+      "\"{{Workspace | translate}}\" ": "\"{{작업 영역 | 번역}\" ",
+      "\"{{Report | translate}}\" ": "\"{{보고서 | 번역}\" "
+    }
   }
 }

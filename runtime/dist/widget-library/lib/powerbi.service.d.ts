@@ -8,8 +8,8 @@ export declare type CachedPowerBIInfo = {
 };
 export declare class PowerBIService {
     private http;
-    private path;
     private static readonly cachedInfoDefault;
+    path: string;
     private configRequested;
     cachedInfo: CachedPowerBIInfo;
     constructor(http: HttpService);
@@ -21,5 +21,5 @@ export declare class PowerBIService {
     listWorkspaces(): Promise<IFetchResponse>;
     listReports(workspaceId: string): Promise<IFetchResponse>;
     embedReport(workspaceId: string, reportId: string): Promise<IFetchResponse>;
-    flushCache(): void;
+    flushCache(): any;
 }

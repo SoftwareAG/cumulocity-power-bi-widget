@@ -1,72 +1,87 @@
-<div class="viewport-modal">
-    <div class="modal-header dialog-header">
-      <i [c8yIcon]="'graph-report'"></i>
-      <h4>
-        {{'Select report' | translate}}
-      </h4>
+<div class="viewport-modal configSection">
+  <div class='row'>
+    <div class="col-xs-3 col-md-3">
+      <label for="Datahub URL">
+        {{'DataHub URL' | translate}}
+      </label>
+      <input type="text" [(ngModel)]="config.datahubEndPoint">
     </div>
-    <div class="p-16 text-center separator-bottom">
-      <p class="lead m-0">{{'Select the workspace you want to access.' | translate }}</p>
-      <p class="lead m-0">{{'Select a report from the selected workspace.' | translate }}</p>
+    <div class="col-xs-1 col-md-1 col-lg-1"></div>
+    <div class="col-xs-3 col-md-3">
+      <label for="Power BI URL">
+        {{'Power BI URL' | translate}}
+      </label>
+      <input type="text" [(ngModel)]="config.powerBIEndPoint">
     </div>
-    <div class="modal-inner-scroll">
-      <div class="modal-body">
-        <form [formGroup]="form">
-          <c8y-form-group>
-            <label for="workspace">
-              {{'Workspace' | translate}}
-            </label>
-            <div class="c8y-select-wrapper">
-              <select formControlName="workspace"
-                      name="workspace"
-                      id="workspace">
-                <option *ngFor="let workspace of workspaces"
-                        [ngValue]="workspace">
-                  {{ workspace.name }}
-                </option>
-              </select>
-            </div>
-          </c8y-form-group>
-          <c8y-form-group>
-            <label for="report">
-              {{'Report' | translate }}
-            </label>
-            <div *ngIf="visibleReports?.length === 0 || error || isLoading; else reportsSelect">
-              <c8y-loading *ngIf="isLoading"></c8y-loading>
-              <em *ngIf="!error && !isLoading; else errorMessage"
-                  translate> No reports available for chosen workspace</em>
-              <ng-template #errorMessage>
-                <div *ngIf="error && !isLoading">
-                  <i [c8yIcon]="'warning'"
-                     class="m-r-4 text-danger"></i>
-                  <em>{{ error }}</em>
-                </div>
-              </ng-template>
-            </div>
-            <ng-template #reportsSelect>
-              <div class="c8y-select-wrapper">
-                <select formControlName="report"
-                        name="report"
-                        id="report">
-                  <option *ngFor="let report of visibleReports"
-                          [ngValue]="report">
-                    {{ report.name }}
-                  </option>
-                </select>
-              </div>
-            </ng-template>
-          </c8y-form-group>
-        </form>
-      </div>
-    </div>
-    <div class="modal-footer">
-      <button class="btn btn-default"
-              (click)="close()">{{ 'Cancel' | translate }}</button>
-      <button [ngClass]="{'btn-pending': isLoading}"
-              class="btn btn-primary"
-              (click)="save()"
-              [disabled]="form.invalid">
-        {{'Select' | translate }}
-      </button>
+    <div class="col-xs-1 col-md-1 col-lg-1"></div>
+    <div class="col-xs-3 col-md-3">
+
+      <button (click)="setUrlAndGetWorkspace()" class="btn btn-primary" style="margin-top: 24px;
+      line-height: 14px;">
+        {{'Fetch Data' | translate}}</button>
     </div>
   </div>
+  <div class="row">
+    <div class="col-xs-3 col-md-3">
+      <label class="c8y-checkbox checkbox-inline" title="isFilterPaneEnabled">
+        <input type="checkbox" value="Add Stack" [(ngModel)]="config.isFilterPaneEnabled"
+          >
+        <span></span>
+        <span>{{'Filter Pane' | translate}}</span>
+      </label>
+    </div>
+    <div class="col-xs-1 col-md-1 col-lg-1"></div>
+    <div class="col-xs-3 col-md-3">
+      <label class="c8y-checkbox checkbox-inline" title="isNavPaneEnabled">
+        <input type="checkbox" value="Add Stack" [(ngModel)]="config.isNavPaneEnabled"
+          >
+        <span></span>
+        <span>{{'Nav Pane' | translate}}</span>
+      </label>
+    </div>
+    
+  </div>
+  <div class="p-16 text-center separator-bottom">
+    <p class="lead m-0">{{'Select the workspace you want to access.' | translate }}</p>
+    <p class="lead m-0">{{'Select a report from the selected workspace.'  | translate}}</p>
+  </div>
+  <form [formGroup]="form">
+    <c8y-form-group>
+      <label for="workspace">
+        {{'Workspace' | translate}}
+      </label>
+      <div class="c8y-select-wrapper">
+        <select formControlName="workspace" name="workspace" id="workspace">
+          <option *ngFor="let workspace of workspaces" [ngValue]="workspace">
+            {{ workspace.name }}
+          </option>
+        </select>
+      </div>
+    </c8y-form-group>
+    <c8y-form-group>
+      <label for="report">
+        {{'Report'  | translate}}
+      </label>
+      <div *ngIf="visibleReports?.length === 0 || error || isLoading; else reportsSelect">
+        <c8y-loading *ngIf="isLoading"></c8y-loading>
+        <em *ngIf="!error && !isLoading; else errorMessage"> No reports available for chosen workspace</em>
+        <ng-template #errorMessage>
+          <div *ngIf="error && !isLoading">
+            <i [c8yIcon]="'warning'" class="m-r-4 text-danger"></i>
+            <em>{{ error }}</em>
+          </div>
+        </ng-template>
+      </div>
+      <ng-template #reportsSelect>
+        <div class="c8y-select-wrapper">
+          <select formControlName="report" name="report" id="report">
+            <option *ngFor="let report of visibleReports" [ngValue]="report">
+              {{ report.name }}
+            </option>
+          </select>
+        </div>
+      </ng-template>
+    </c8y-form-group>
+  </form>
+
+</div>
