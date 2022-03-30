@@ -17,7 +17,6 @@
  */
 import { Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { AlertService, gettext } from '@c8y/ngx-components';
-import { TranslateService } from '@ngx-translate/core';
 import * as pbiClient from 'powerbi-client';
 import { HttpService } from './http.service';
 import { EmbeddingInfo, PowerBIWorkspace } from './powerbi.interface';
@@ -50,7 +49,6 @@ export class GpPowerbiWidgetComponent implements OnInit, OnChanges {
     private powerbiService: PowerBIService,
     private alertService: AlertService,
     private http: HttpService,
-    private translateService: TranslateService
   ) {}
   // When changes are pushed from host component to report component, component is reinitialized to show a different report.
   // This may not be needed in customer scenario
@@ -65,14 +63,14 @@ export class GpPowerbiWidgetComponent implements OnInit, OnChanges {
       this.powerbiService.path = this.config.powerBIEndPoint;
       await this.loadReport(this.config);
     } catch (e){
-      this.alertService.danger(this.translateService.instant(gettext('Failed to load report.')));
+      this.alertService.danger('Failed to load report.');
     }
     try {
       // tslint:disable-next-line:max-line-length
       this.embedReport(this.embeddingInfo.reportId, this.embeddingInfo.embeddingToken, this.config.isFilterPaneEnabled, this.config.isNavPaneEnabled);
     } catch (e) {
       // this.alertService.danger('Failed to fetch embedding token.');
-      this.alertService.danger(this.translateService.instant(gettext('Failed to fetch embedding token.')));
+      this.alertService.danger('Failed to fetch embedding token.');
     }
   }
   // This is where the Power BI client is actually used - parametrize the config however you like
@@ -97,9 +95,7 @@ export class GpPowerbiWidgetComponent implements OnInit, OnChanges {
     const report = this.powerbi.embed(reportContainer, embedConfig);
     report.off('error');
     report.on('error', (error) => {
-      this.alertService.danger(
-        this.translateService.instant(gettext('Failed to embed report.'))
-      );
+      this.alertService.danger('Failed to embed report.');
     });
   }
   // Load the report based on worspace selected
@@ -133,21 +129,15 @@ export class GpPowerbiWidgetComponent implements OnInit, OnChanges {
           };
           return this.embeddedReport.token;
         } else {
-          this.alertService.danger(
-            this.translateService.instant(gettext('Error in payload'))  
-          );
+          this.alertService.danger('Error in payload');
           throw Error();
         }
       } else {
-        this.alertService.danger(
-          this.translateService.instant(gettext('Error in tokenRequest'))  
-        );
+        this.alertService.danger('Error in tokenRequest');
         throw Error();
       }
     } catch (e) {
-      this.alertService.danger(
-        this.translateService.instant(gettext('An error occurred while fetching the embedding token for the report.'))  
-      );
+      this.alertService.danger('An error occurred while fetching the embedding token for the report.');
     }
   }
 }

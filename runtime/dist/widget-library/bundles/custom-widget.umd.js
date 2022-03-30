@@ -1,8 +1,8 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@c8y/ngx-components'), require('@ngx-translate/core'), require('powerbi-client'), require('@c8y/client'), require('@angular/forms'), require('@angular/router'), require('ngx-bootstrap/collapse'), require('rxjs')) :
-    typeof define === 'function' && define.amd ? define('powerbi-runtime-widget', ['exports', '@angular/core', '@c8y/ngx-components', '@ngx-translate/core', 'powerbi-client', '@c8y/client', '@angular/forms', '@angular/router', 'ngx-bootstrap/collapse', 'rxjs'], factory) :
-    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global["powerbi-runtime-widget"] = {}, global.ng.core, global["@c8y/ngx-components"], global.core$1, global.pbiClient, global.client, global.ng.forms, global.ng.router, global.collapse, global.rxjs));
-})(this, (function (exports, core, ngxComponents, core$1, pbiClient, client, forms, router, collapse, rxjs) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@c8y/ngx-components'), require('powerbi-client'), require('@c8y/client'), require('@angular/forms'), require('@angular/router'), require('ngx-bootstrap/collapse'), require('rxjs')) :
+    typeof define === 'function' && define.amd ? define('powerbi-runtime-widget', ['exports', '@angular/core', '@c8y/ngx-components', 'powerbi-client', '@c8y/client', '@angular/forms', '@angular/router', 'ngx-bootstrap/collapse', 'rxjs'], factory) :
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global["powerbi-runtime-widget"] = {}, global.ng.core, global["@c8y/ngx-components"], global.pbiClient, global.client, global.ng.forms, global.ng.router, global.collapse, global.rxjs));
+})(this, (function (exports, core, ngxComponents, pbiClient, client, forms, router, collapse, rxjs) { 'use strict';
 
     function _interopNamespace(e) {
         if (e && e.__esModule) return e;
@@ -531,11 +531,10 @@
     ]; };
 
     var GpPowerbiWidgetComponent = /** @class */ (function () {
-        function GpPowerbiWidgetComponent(powerbiService, alertService, http, translateService) {
+        function GpPowerbiWidgetComponent(powerbiService, alertService, http) {
             this.powerbiService = powerbiService;
             this.alertService = alertService;
             this.http = http;
-            this.translateService = translateService;
             this.powerbi = new pbiClient__namespace.service.Service(pbiClient__namespace.factories.hpmFactory, pbiClient__namespace.factories.wpmpFactory, pbiClient__namespace.factories.routerFactory);
             this.workspaces = [];
             this.settingsNotDefined = false;
@@ -574,7 +573,7 @@
                             return [3 /*break*/, 3];
                         case 2:
                             e_1 = _a.sent();
-                            this.alertService.danger(this.translateService.instant(ngxComponents.gettext('Failed to load report.')));
+                            this.alertService.danger('Failed to load report.');
                             return [3 /*break*/, 3];
                         case 3:
                             try {
@@ -583,7 +582,7 @@
                             }
                             catch (e) {
                                 // this.alertService.danger('Failed to fetch embedding token.');
-                                this.alertService.danger(this.translateService.instant(ngxComponents.gettext('Failed to fetch embedding token.')));
+                                this.alertService.danger('Failed to fetch embedding token.');
                             }
                             return [2 /*return*/];
                     }
@@ -613,7 +612,7 @@
             var report = this.powerbi.embed(reportContainer, embedConfig);
             report.off('error');
             report.on('error', function (error) {
-                _this.alertService.danger(_this.translateService.instant(ngxComponents.gettext('Failed to embed report.')));
+                _this.alertService.danger('Failed to embed report.');
             });
         };
         // Load the report based on worspace selected
@@ -667,17 +666,17 @@
                                 return [2 /*return*/, this.embeddedReport.token];
                             }
                             else {
-                                this.alertService.danger(this.translateService.instant(ngxComponents.gettext('Error in payload')));
+                                this.alertService.danger('Error in payload');
                                 throw Error();
                             }
                             return [3 /*break*/, 4];
                         case 3:
-                            this.alertService.danger(this.translateService.instant(ngxComponents.gettext('Error in tokenRequest')));
+                            this.alertService.danger('Error in tokenRequest');
                             throw Error();
                         case 4: return [3 /*break*/, 6];
                         case 5:
                             e_2 = _a.sent();
-                            this.alertService.danger(this.translateService.instant(ngxComponents.gettext('An error occurred while fetching the embedding token for the report.')));
+                            this.alertService.danger('An error occurred while fetching the embedding token for the report.');
                             return [3 /*break*/, 6];
                         case 6: return [2 /*return*/];
                     }
@@ -695,8 +694,7 @@
     GpPowerbiWidgetComponent.ctorParameters = function () { return [
         { type: PowerBIService },
         { type: ngxComponents.AlertService },
-        { type: HttpService },
-        { type: core$1.TranslateService }
+        { type: HttpService }
     ]; };
     GpPowerbiWidgetComponent.propDecorators = {
         reportContainer: [{ type: core.ViewChild, args: ['reportContainer', { static: true },] }],
@@ -704,12 +702,11 @@
     };
 
     var GpPowerbiConfigComponent = /** @class */ (function () {
-        function GpPowerbiConfigComponent(powerbiService, fb, alertService, http, translateService) {
+        function GpPowerbiConfigComponent(powerbiService, fb, alertService, http) {
             this.powerbiService = powerbiService;
             this.fb = fb;
             this.alertService = alertService;
             this.http = http;
-            this.translateService = translateService;
             this.config = {
                 powerBIEndPoint: '',
                 datahubEndPoint: ''
@@ -903,7 +900,7 @@
                         case 5: return [3 /*break*/, 8];
                         case 6:
                             e_1 = _b.sent();
-                            this.error = this.translateService.instant(ngxComponents.gettext('Fetching reports for workspace failed.'));
+                            this.error = 'Fetching reports for workspace failed.';
                             return [3 /*break*/, 8];
                         case 7:
                             this.isLoading = false;
@@ -940,7 +937,7 @@
                         case 13: return [3 /*break*/, 16];
                         case 14:
                             e_2 = _b.sent();
-                            this.error = this.translateService.instant(ngxComponents.gettext('Fetching reports for workspace failed.'));
+                            this.error = 'Fetching reports for workspace failed.';
                             return [3 /*break*/, 16];
                         case 15:
                             this.isLoading = false;
@@ -1021,7 +1018,7 @@
     GpPowerbiConfigComponent.decorators = [
         { type: core.Component, args: [{
                     selector: 'gp-powerbi-config',
-                    template: "<div class=\"viewport-modal configSection\">\n  <div class='row'>\n    <div class=\"col-xs-3 col-md-3\">\n      <label for=\"Datahub URL\">\n        {{'DataHub URL' | translate}}\n      </label>\n      <input type=\"text\" [(ngModel)]=\"config.datahubEndPoint\">\n    </div>\n    <div class=\"col-xs-1 col-md-1 col-lg-1\"></div>\n    <div class=\"col-xs-3 col-md-3\">\n      <label for=\"Power BI URL\">\n        {{'Power BI URL' | translate}}\n      </label>\n      <input type=\"text\" [(ngModel)]=\"config.powerBIEndPoint\">\n    </div>\n    <div class=\"col-xs-1 col-md-1 col-lg-1\"></div>\n    <div class=\"col-xs-3 col-md-3\">\n\n      <button (click)=\"setUrlAndGetWorkspace()\" class=\"btn btn-primary\" style=\"margin-top: 24px;\n      line-height: 14px;\">\n        {{'Fetch Data' | translate}}</button>\n    </div>\n  </div>\n  <div class=\"row\">\n    <div class=\"col-xs-3 col-md-3\">\n      <label class=\"c8y-checkbox checkbox-inline\" title=\"isFilterPaneEnabled\">\n        <input type=\"checkbox\" value=\"Add Stack\" [(ngModel)]=\"config.isFilterPaneEnabled\"\n          >\n        <span></span>\n        <span>{{'Filter Pane' | translate}}</span>\n      </label>\n    </div>\n    <div class=\"col-xs-1 col-md-1 col-lg-1\"></div>\n    <div class=\"col-xs-3 col-md-3\">\n      <label class=\"c8y-checkbox checkbox-inline\" title=\"isNavPaneEnabled\">\n        <input type=\"checkbox\" value=\"Add Stack\" [(ngModel)]=\"config.isNavPaneEnabled\"\n          >\n        <span></span>\n        <span>{{'Nav Pane' | translate}}</span>\n      </label>\n    </div>\n    \n  </div>\n  <div class=\"p-16 text-center separator-bottom\">\n    <p class=\"lead m-0\">{{'Select the workspace you want to access.' | translate }}</p>\n    <p class=\"lead m-0\">{{'Select a report from the selected workspace.'  | translate}}</p>\n  </div>\n  <form [formGroup]=\"form\">\n    <c8y-form-group>\n      <label for=\"workspace\">\n        {{'Workspace' | translate}}\n      </label>\n      <div class=\"c8y-select-wrapper\">\n        <select formControlName=\"workspace\" name=\"workspace\" id=\"workspace\">\n          <option *ngFor=\"let workspace of workspaces\" [ngValue]=\"workspace\">\n            {{ workspace.name }}\n          </option>\n        </select>\n      </div>\n    </c8y-form-group>\n    <c8y-form-group>\n      <label for=\"report\">\n        {{'Report'  | translate}}\n      </label>\n      <div *ngIf=\"visibleReports?.length === 0 || error || isLoading; else reportsSelect\">\n        <c8y-loading *ngIf=\"isLoading\"></c8y-loading>\n        <em *ngIf=\"!error && !isLoading; else errorMessage\"> No reports available for chosen workspace</em>\n        <ng-template #errorMessage>\n          <div *ngIf=\"error && !isLoading\">\n            <i [c8yIcon]=\"'warning'\" class=\"m-r-4 text-danger\"></i>\n            <em>{{ error }}</em>\n          </div>\n        </ng-template>\n      </div>\n      <ng-template #reportsSelect>\n        <div class=\"c8y-select-wrapper\">\n          <select formControlName=\"report\" name=\"report\" id=\"report\">\n            <option *ngFor=\"let report of visibleReports\" [ngValue]=\"report\">\n              {{ report.name }}\n            </option>\n          </select>\n        </div>\n      </ng-template>\n    </c8y-form-group>\n  </form>\n\n</div>",
+                    template: "<div class=\"viewport-modal configSection\">\r\n  <div class='row'>\r\n    <div class=\"col-xs-3 col-md-3\">\r\n      <label for=\"Datahub URL\">\r\n        {{'DataHub URL'}}\r\n      </label>\r\n      <input type=\"text\" [(ngModel)]=\"config.datahubEndPoint\">\r\n    </div>\r\n    <div class=\"col-xs-1 col-md-1 col-lg-1\"></div>\r\n    <div class=\"col-xs-3 col-md-3\">\r\n      <label for=\"Power BI URL\">\r\n        {{'Power BI URL'}}\r\n      </label>\r\n      <input type=\"text\" [(ngModel)]=\"config.powerBIEndPoint\">\r\n    </div>\r\n    <div class=\"col-xs-1 col-md-1 col-lg-1\"></div>\r\n    <div class=\"col-xs-3 col-md-3\">\r\n\r\n      <button (click)=\"setUrlAndGetWorkspace()\" class=\"btn btn-primary\" style=\"margin-top: 24px;\r\n      line-height: 14px;\">\r\n        {{'Fetch Data'}}</button>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n    <div class=\"col-xs-3 col-md-3\">\r\n      <label class=\"c8y-checkbox checkbox-inline\" title=\"isFilterPaneEnabled\">\r\n        <input type=\"checkbox\" value=\"Add Stack\" [(ngModel)]=\"config.isFilterPaneEnabled\"\r\n          >\r\n        <span></span>\r\n        <span>{{'Filter Pane'}}</span>\r\n      </label>\r\n    </div>\r\n    <div class=\"col-xs-1 col-md-1 col-lg-1\"></div>\r\n    <div class=\"col-xs-3 col-md-3\">\r\n      <label class=\"c8y-checkbox checkbox-inline\" title=\"isNavPaneEnabled\">\r\n        <input type=\"checkbox\" value=\"Add Stack\" [(ngModel)]=\"config.isNavPaneEnabled\"\r\n          >\r\n        <span></span>\r\n        <span>{{'Nav Pane'}}</span>\r\n      </label>\r\n    </div>\r\n    \r\n  </div>\r\n  <div class=\"p-16 text-center separator-bottom\">\r\n    <p class=\"lead m-0\">{{'Select the workspace you want to access.' }}</p>\r\n    <p class=\"lead m-0\">{{'Select a report from the selected workspace.' }}</p>\r\n  </div>\r\n  <form [formGroup]=\"form\">\r\n    <c8y-form-group>\r\n      <label for=\"workspace\">\r\n        {{'Workspace'}}\r\n      </label>\r\n      <div class=\"c8y-select-wrapper\">\r\n        <select formControlName=\"workspace\" name=\"workspace\" id=\"workspace\">\r\n          <option *ngFor=\"let workspace of workspaces\" [ngValue]=\"workspace\">\r\n            {{ workspace.name }}\r\n          </option>\r\n        </select>\r\n      </div>\r\n    </c8y-form-group>\r\n    <c8y-form-group>\r\n      <label for=\"report\">\r\n        {{'Report' }}\r\n      </label>\r\n      <div *ngIf=\"visibleReports?.length === 0 || error || isLoading; else reportsSelect\">\r\n        <c8y-loading *ngIf=\"isLoading\"></c8y-loading>\r\n        <em *ngIf=\"!error && !isLoading; else errorMessage\"> No reports available for chosen workspace</em>\r\n        <ng-template #errorMessage>\r\n          <div *ngIf=\"error && !isLoading\">\r\n            <i [c8yIcon]=\"'warning'\" class=\"m-r-4 text-danger\"></i>\r\n            <em>{{ error }}</em>\r\n          </div>\r\n        </ng-template>\r\n      </div>\r\n      <ng-template #reportsSelect>\r\n        <div class=\"c8y-select-wrapper\">\r\n          <select formControlName=\"report\" name=\"report\" id=\"report\">\r\n            <option *ngFor=\"let report of visibleReports\" [ngValue]=\"report\">\r\n              {{ report.name }}\r\n            </option>\r\n          </select>\r\n        </div>\r\n      </ng-template>\r\n    </c8y-form-group>\r\n  </form>\r\n\r\n</div>",
                     styles: [".configSection{display:grid;border:1px solid rgba(0,0,0,.3);border-radius:4px;margin:.25em;padding:.25em}.row{padding:.5em}"]
                 },] }
     ];
@@ -1029,8 +1026,7 @@
         { type: PowerBIService },
         { type: forms.FormBuilder },
         { type: ngxComponents.AlertService },
-        { type: HttpService },
-        { type: core$1.TranslateService }
+        { type: HttpService }
     ]; };
     GpPowerbiConfigComponent.propDecorators = {
         config: [{ type: core.Input }]
@@ -1079,14 +1075,11 @@
         { type: core.NgModule, args: [{
                     declarations: [GpPowerbiWidgetComponent, GpPowerbiConfigComponent],
                     imports: [
-                        ngxComponents.CoreModule, collapse.CollapseModule, router.RouterModule, ngxComponents.FormsModule, forms.ReactiveFormsModule,
-                        core$1.TranslateModule.forRoot()
+                        ngxComponents.CoreModule, collapse.CollapseModule, router.RouterModule, ngxComponents.FormsModule, forms.ReactiveFormsModule
                     ],
                     providers: [
                         HttpService,
                         PowerBIService,
-                        core$1.TranslateService,
-                        core$1.TranslateStore,
                         {
                             provide: ngxComponents.HOOK_COMPONENTS,
                             multi: true,

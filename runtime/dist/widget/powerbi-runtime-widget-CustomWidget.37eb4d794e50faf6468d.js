@@ -1,4 +1,4 @@
-(window["webpackRegister"] = window["webpackRegister"] || []).push([{"hash":"968224a64a993fdf084a","publicPath":"/"},["powerbi-runtime-widget","powerbi-runtime-widget-stylejs","powerbi-runtime-widget~vendors~powerbi-runtime-widget"],{"powerbi-runtime-widget":{"js":["@angular/core","@angular/forms","@angular/router","@c8y/client","@c8y/ngx-components"],"css":[]},"powerbi-runtime-widget-stylejs":{"js":["iTEsz","iTEszH"],"css":[]},"powerbi-runtime-widget~vendors~powerbi-runtime-widget":{"js":["+EQEv","+GN+f","+TWY+","+c+6B","+o29A","/Qf9L","/VnbF","/cLHZ","/d8Dd","/kCCZ","0Te7H","0cUew","0fSKJ","0sdDC","1F4ez","1aV0h","1vXgV","23acD","2HGHX","2JqaU","2MvVC","2yhGR","3ytmq","49Mjj","4IgIC","4aUHd","4fcnT","58yPh","5BILJ","5FdOW","5JEAz","5n0pw","6Jc1O","6KUJ0","6LoQE","6lTDF","6sAdV","706W1","7Aw3W","7IE55","7Nf72","7R+B1","7nbfJ","8u75O","9PV0d","9QTON","9WVQ/","9yRFy","ABTxi","AsnEI","AutFq","C4IIB","CHq41","CfE2j","Cz8zc","DVj+H","DaoTP","DdBFj","ECtxm","EeMP0","F3Xx4","FaVlb","GX/az","GYkk8","GmxG7","I/Ilg","IsxIL","J9XMP","JWFi/","Kk6ZM","KodR1","LXlH/","MBvaW","MaBBs","Mmv+h","MybUT","Nnvso","O9UqH","OD6N/","OQOZT","OmMxE","P3RI0","PN1Ah","PRzV3","PzvEG","Quha5","R5nOe","RKJ2M","RUn7r","S1ctr","S4kDR","SIz5j","SK0Ko","SOcvF","ScCpL","SmTmD","Swzso","T9uVa","TDwpe","TZ8/c","U6HW5","UvRYD","Va1a/","Vvoaz","W+ClW","WDAzD","WRuhG","WlDtl","Wpx1A","XAbP7","XGRIm","XGkn3","YFJU1","YSVFJ","Yhnr0","ZPA1Y","a5QY0","aKXtF","arlJz","b0YOy","bDTlG","bOUFu","cCzom","cOj3U","d/Jtc","dEYPQ","dVJnr","dVgWo","diaPp","dl9PT","eAJHC","eBpDI","eG1rB","eNhP5","ecAra","enMof","f05T3","fQpg6","fRdC3","fsXTl","fugzg","g0wHV","gO5+3","gXLj1","gYLwd","giMIN","gpQV8","h057u","hi1s6","hrHP9","ih/RX","ipw6G","itssu","jFyh/","jNCqY","jwQ+6","jwvgu","kRBjJ","kSZOf","kssCV","l0Y4u","lCEgk","lsME7","mciV/","n8yxC","naI4Q","o5EoV","oQF5o","oikxn","owOvt","p/c7N","pCTtx","pRlP/","q4MU8","q5Aay","q99Yz","qOf/W","qXXJ1","ql+u/","qo8Nq","qyieN","r//Lz","r6MsT","rFrVU","royA4","rtgyg","sEStO","siYZL","t+2Xk","t49MP","taMQj","u+ord","uYiPV","vQJLg","viUVt","vtiaz","w+1YT","w1ODW","xO8c9","xbx04","xe6N6","yO4yE","yXqMs","yuDTw","z1KC0","zAhfX","zj2bb","zrvsO"],"css":[]}}]);
+(window["webpackRegister"] = window["webpackRegister"] || []).push([{"hash":"063319488e09fc79e561","publicPath":"/"},["powerbi-runtime-widget","powerbi-runtime-widget-stylejs","powerbi-runtime-widget~vendors~powerbi-runtime-widget"],{"powerbi-runtime-widget":{"js":["@angular/core","@angular/forms","@angular/router","@c8y/client","@c8y/ngx-components"],"css":[]},"powerbi-runtime-widget-stylejs":{"js":["iTEsz","iTEszH"],"css":[]},"powerbi-runtime-widget~vendors~powerbi-runtime-widget":{"js":["+EQEv","+c+6B","+o29A","/cLHZ","0cUew","0fSKJ","0sdDC","1aV0h","1vXgV","3ytmq","49Mjj","4IgIC","4aUHd","4fcnT","58yPh","5JEAz","6Jc1O","6KUJ0","6LoQE","7Nf72","7R+B1","7nbfJ","8u75O","9QTON","9WVQ/","9yRFy","ABTxi","CHq41","CfE2j","FaVlb","GX/az","KodR1","LXlH/","MaBBs","Mmv+h","MybUT","O9UqH","OmMxE","PN1Ah","Quha5","R5nOe","RKJ2M","S1ctr","SK0Ko","ScCpL","T9uVa","TZ8/c","U6HW5","UvRYD","W+ClW","WDAzD","WlDtl","Wpx1A","XAbP7","XGRIm","YSVFJ","aKXtF","b0YOy","bDTlG","bOUFu","cCzom","d/Jtc","dEYPQ","dVJnr","diaPp","dl9PT","eG1rB","eNhP5","fRdC3","fugzg","g0wHV","gXLj1","gpQV8","hrHP9","ih/RX","itssu","jFyh/","kRBjJ","kssCV","l0Y4u","lCEgk","lsME7","o5EoV","oikxn","owOvt","pCTtx","pRlP/","q99Yz","qOf/W","ql+u/","qo8Nq","qyieN","r//Lz","r6MsT","royA4","rtgyg","sEStO","t+2Xk","taMQj","u+ord","uYiPV","vQJLg","w1ODW","xO8c9","xbx04","xe6N6","yO4yE","z1KC0","zrvsO"],"css":[]}}]);
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["powerbi-runtime-widget-CustomWidget"],{
 
 /***/ "powerbi-runtime-widget-CustomWidget":
@@ -22,18 +22,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _c8y_ngx_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @c8y/ngx-components */ "@c8y/ngx-components");
 /* harmony import */ var _c8y_ngx_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_c8y_ngx_components__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ "4fcnT");
-/* harmony import */ var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ngx-translate/core */ "0Te7H");
-/* harmony import */ var powerbi_client__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! powerbi-client */ "w1ODW");
-/* harmony import */ var powerbi_client__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(powerbi_client__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _c8y_client__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @c8y/client */ "@c8y/client");
-/* harmony import */ var _c8y_client__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_c8y_client__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/forms */ "@angular/forms");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_angular_forms__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/router */ "@angular/router");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_angular_router__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var ngx_bootstrap_collapse__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ngx-bootstrap/collapse */ "LXlH/");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! rxjs */ "qo8Nq");
-
+/* harmony import */ var powerbi_client__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! powerbi-client */ "w1ODW");
+/* harmony import */ var powerbi_client__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(powerbi_client__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _c8y_client__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @c8y/client */ "@c8y/client");
+/* harmony import */ var _c8y_client__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_c8y_client__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/forms */ "@angular/forms");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_angular_forms__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/router */ "@angular/router");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_angular_router__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var ngx_bootstrap_collapse__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ngx-bootstrap/collapse */ "LXlH/");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! rxjs */ "qo8Nq");
 
 
 
@@ -90,7 +88,7 @@ HttpService.decorators = [
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"] }
 ];
 HttpService.ctorParameters = () => [
-    { type: _c8y_client__WEBPACK_IMPORTED_MODULE_6__["FetchClient"] }
+    { type: _c8y_client__WEBPACK_IMPORTED_MODULE_5__["FetchClient"] }
 ];
 
 class PowerBIService {
@@ -175,12 +173,11 @@ PowerBIService.ctorParameters = () => [
 ];
 
 class GpPowerbiWidgetComponent {
-    constructor(powerbiService, alertService, http, translateService) {
+    constructor(powerbiService, alertService, http) {
         this.powerbiService = powerbiService;
         this.alertService = alertService;
         this.http = http;
-        this.translateService = translateService;
-        this.powerbi = new powerbi_client__WEBPACK_IMPORTED_MODULE_5__["service"].Service(powerbi_client__WEBPACK_IMPORTED_MODULE_5__["factories"].hpmFactory, powerbi_client__WEBPACK_IMPORTED_MODULE_5__["factories"].wpmpFactory, powerbi_client__WEBPACK_IMPORTED_MODULE_5__["factories"].routerFactory);
+        this.powerbi = new powerbi_client__WEBPACK_IMPORTED_MODULE_4__["service"].Service(powerbi_client__WEBPACK_IMPORTED_MODULE_4__["factories"].hpmFactory, powerbi_client__WEBPACK_IMPORTED_MODULE_4__["factories"].wpmpFactory, powerbi_client__WEBPACK_IMPORTED_MODULE_4__["factories"].routerFactory);
         this.workspaces = [];
         this.settingsNotDefined = false;
         this.isLoading = false;
@@ -203,7 +200,7 @@ class GpPowerbiWidgetComponent {
                 yield this.loadReport(this.config);
             }
             catch (e) {
-                this.alertService.danger(this.translateService.instant(Object(_c8y_ngx_components__WEBPACK_IMPORTED_MODULE_2__["gettext"])('Failed to load report.')));
+                this.alertService.danger('Failed to load report.');
             }
             try {
                 // tslint:disable-next-line:max-line-length
@@ -211,7 +208,7 @@ class GpPowerbiWidgetComponent {
             }
             catch (e) {
                 // this.alertService.danger('Failed to fetch embedding token.');
-                this.alertService.danger(this.translateService.instant(Object(_c8y_ngx_components__WEBPACK_IMPORTED_MODULE_2__["gettext"])('Failed to fetch embedding token.')));
+                this.alertService.danger('Failed to fetch embedding token.');
             }
         });
     }
@@ -221,7 +218,7 @@ class GpPowerbiWidgetComponent {
             type: 'report',
             id: reportId,
             embedUrl: this.embedUrl,
-            tokenType: powerbi_client__WEBPACK_IMPORTED_MODULE_5__["models"].TokenType.Embed,
+            tokenType: powerbi_client__WEBPACK_IMPORTED_MODULE_4__["models"].TokenType.Embed,
             accessToken: token,
             // permissions: pbi.models.Permissions.Read,
             settings: {
@@ -229,7 +226,7 @@ class GpPowerbiWidgetComponent {
                 filterPaneEnabled: filterPanelEnabled,
                 // Same as filterPaneEnabled
                 navContentPaneEnabled: navPanelEnabled,
-                background: powerbi_client__WEBPACK_IMPORTED_MODULE_5__["models"].BackgroundType.Transparent
+                background: powerbi_client__WEBPACK_IMPORTED_MODULE_4__["models"].BackgroundType.Transparent
             }
         };
         const reportContainer = this.reportContainer.nativeElement;
@@ -237,7 +234,7 @@ class GpPowerbiWidgetComponent {
         const report = this.powerbi.embed(reportContainer, embedConfig);
         report.off('error');
         report.on('error', (error) => {
-            this.alertService.danger(this.translateService.instant(Object(_c8y_ngx_components__WEBPACK_IMPORTED_MODULE_2__["gettext"])('Failed to embed report.')));
+            this.alertService.danger('Failed to embed report.');
         });
     }
     // Load the report based on worspace selected
@@ -275,17 +272,17 @@ class GpPowerbiWidgetComponent {
                         return this.embeddedReport.token;
                     }
                     else {
-                        this.alertService.danger(this.translateService.instant(Object(_c8y_ngx_components__WEBPACK_IMPORTED_MODULE_2__["gettext"])('Error in payload')));
+                        this.alertService.danger('Error in payload');
                         throw Error();
                     }
                 }
                 else {
-                    this.alertService.danger(this.translateService.instant(Object(_c8y_ngx_components__WEBPACK_IMPORTED_MODULE_2__["gettext"])('Error in tokenRequest')));
+                    this.alertService.danger('Error in tokenRequest');
                     throw Error();
                 }
             }
             catch (e) {
-                this.alertService.danger(this.translateService.instant(Object(_c8y_ngx_components__WEBPACK_IMPORTED_MODULE_2__["gettext"])('An error occurred while fetching the embedding token for the report.')));
+                this.alertService.danger('An error occurred while fetching the embedding token for the report.');
             }
         });
     }
@@ -299,8 +296,7 @@ GpPowerbiWidgetComponent.decorators = [
 GpPowerbiWidgetComponent.ctorParameters = () => [
     { type: PowerBIService },
     { type: _c8y_ngx_components__WEBPACK_IMPORTED_MODULE_2__["AlertService"] },
-    { type: HttpService },
-    { type: _ngx_translate_core__WEBPACK_IMPORTED_MODULE_4__["TranslateService"] }
+    { type: HttpService }
 ];
 GpPowerbiWidgetComponent.propDecorators = {
     reportContainer: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"], args: ['reportContainer', { static: true },] }],
@@ -308,12 +304,11 @@ GpPowerbiWidgetComponent.propDecorators = {
 };
 
 class GpPowerbiConfigComponent {
-    constructor(powerbiService, fb, alertService, http, translateService) {
+    constructor(powerbiService, fb, alertService, http) {
         this.powerbiService = powerbiService;
         this.fb = fb;
         this.alertService = alertService;
         this.http = http;
-        this.translateService = translateService;
         this.config = {
             powerBIEndPoint: '',
             datahubEndPoint: ''
@@ -323,15 +318,15 @@ class GpPowerbiConfigComponent {
         this.workspaceIndex = 0;
         this.isLoading = false;
         this.testUrl = 'hello';
-        this.onClose = new rxjs__WEBPACK_IMPORTED_MODULE_10__["Subject"]();
+        this.onClose = new rxjs__WEBPACK_IMPORTED_MODULE_9__["Subject"]();
         this.modalResult = {
             workspaceId: null,
             report: null
         };
         this.error = '';
         this.form = this.fb.group({
-            workspace: this.fb.control(null, _angular_forms__WEBPACK_IMPORTED_MODULE_7__["Validators"].required),
-            report: this.fb.control(null, _angular_forms__WEBPACK_IMPORTED_MODULE_7__["Validators"].required)
+            workspace: this.fb.control(null, _angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required),
+            report: this.fb.control(null, _angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required)
         });
     }
     ngOnInit() {
@@ -432,14 +427,14 @@ class GpPowerbiConfigComponent {
         const selectedReportIndex = this.extractReportIndex();
         if (selectedWorkspaceIndex) {
             this.form = this.fb.group({
-                workspace: this.fb.control(this.workspaces[selectedWorkspaceIndex], _angular_forms__WEBPACK_IMPORTED_MODULE_7__["Validators"].required),
-                report: this.fb.control(this.reports[0].length > 0 ? this.reports[0][selectedReportIndex] : null, _angular_forms__WEBPACK_IMPORTED_MODULE_7__["Validators"].required)
+                workspace: this.fb.control(this.workspaces[selectedWorkspaceIndex], _angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required),
+                report: this.fb.control(this.reports[0].length > 0 ? this.reports[0][selectedReportIndex] : null, _angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required)
             });
         }
         else {
             this.form = this.fb.group({
-                workspace: this.fb.control(this.workspaces[0], _angular_forms__WEBPACK_IMPORTED_MODULE_7__["Validators"].required),
-                report: this.fb.control(this.reports[0].length > 0 ? this.reports[0][0] : null, _angular_forms__WEBPACK_IMPORTED_MODULE_7__["Validators"].required)
+                workspace: this.fb.control(this.workspaces[0], _angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required),
+                report: this.fb.control(this.reports[0].length > 0 ? this.reports[0][0] : null, _angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required)
             });
         }
         this.visibleReports = this.reports[0];
@@ -480,7 +475,7 @@ class GpPowerbiConfigComponent {
                         }
                     }
                     catch (e) {
-                        this.error = this.translateService.instant(Object(_c8y_ngx_components__WEBPACK_IMPORTED_MODULE_2__["gettext"])('Fetching reports for workspace failed.'));
+                        this.error = 'Fetching reports for workspace failed.';
                     }
                     finally {
                         this.isLoading = false;
@@ -513,7 +508,7 @@ class GpPowerbiConfigComponent {
                         }
                     }
                     catch (e) {
-                        this.error = this.translateService.instant(Object(_c8y_ngx_components__WEBPACK_IMPORTED_MODULE_2__["gettext"])('Fetching reports for workspace failed.'));
+                        this.error = 'Fetching reports for workspace failed.';
                     }
                     finally {
                         this.isLoading = false;
@@ -574,16 +569,15 @@ class GpPowerbiConfigComponent {
 GpPowerbiConfigComponent.decorators = [
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"], args: [{
                 selector: 'gp-powerbi-config',
-                template: "<div class=\"viewport-modal configSection\">\n  <div class='row'>\n    <div class=\"col-xs-3 col-md-3\">\n      <label for=\"Datahub URL\">\n        {{'DataHub URL' | translate}}\n      </label>\n      <input type=\"text\" [(ngModel)]=\"config.datahubEndPoint\">\n    </div>\n    <div class=\"col-xs-1 col-md-1 col-lg-1\"></div>\n    <div class=\"col-xs-3 col-md-3\">\n      <label for=\"Power BI URL\">\n        {{'Power BI URL' | translate}}\n      </label>\n      <input type=\"text\" [(ngModel)]=\"config.powerBIEndPoint\">\n    </div>\n    <div class=\"col-xs-1 col-md-1 col-lg-1\"></div>\n    <div class=\"col-xs-3 col-md-3\">\n\n      <button (click)=\"setUrlAndGetWorkspace()\" class=\"btn btn-primary\" style=\"margin-top: 24px;\n      line-height: 14px;\">\n        {{'Fetch Data' | translate}}</button>\n    </div>\n  </div>\n  <div class=\"row\">\n    <div class=\"col-xs-3 col-md-3\">\n      <label class=\"c8y-checkbox checkbox-inline\" title=\"isFilterPaneEnabled\">\n        <input type=\"checkbox\" value=\"Add Stack\" [(ngModel)]=\"config.isFilterPaneEnabled\"\n          >\n        <span></span>\n        <span>{{'Filter Pane' | translate}}</span>\n      </label>\n    </div>\n    <div class=\"col-xs-1 col-md-1 col-lg-1\"></div>\n    <div class=\"col-xs-3 col-md-3\">\n      <label class=\"c8y-checkbox checkbox-inline\" title=\"isNavPaneEnabled\">\n        <input type=\"checkbox\" value=\"Add Stack\" [(ngModel)]=\"config.isNavPaneEnabled\"\n          >\n        <span></span>\n        <span>{{'Nav Pane' | translate}}</span>\n      </label>\n    </div>\n    \n  </div>\n  <div class=\"p-16 text-center separator-bottom\">\n    <p class=\"lead m-0\">{{'Select the workspace you want to access.' | translate }}</p>\n    <p class=\"lead m-0\">{{'Select a report from the selected workspace.'  | translate}}</p>\n  </div>\n  <form [formGroup]=\"form\">\n    <c8y-form-group>\n      <label for=\"workspace\">\n        {{'Workspace' | translate}}\n      </label>\n      <div class=\"c8y-select-wrapper\">\n        <select formControlName=\"workspace\" name=\"workspace\" id=\"workspace\">\n          <option *ngFor=\"let workspace of workspaces\" [ngValue]=\"workspace\">\n            {{ workspace.name }}\n          </option>\n        </select>\n      </div>\n    </c8y-form-group>\n    <c8y-form-group>\n      <label for=\"report\">\n        {{'Report'  | translate}}\n      </label>\n      <div *ngIf=\"visibleReports?.length === 0 || error || isLoading; else reportsSelect\">\n        <c8y-loading *ngIf=\"isLoading\"></c8y-loading>\n        <em *ngIf=\"!error && !isLoading; else errorMessage\"> No reports available for chosen workspace</em>\n        <ng-template #errorMessage>\n          <div *ngIf=\"error && !isLoading\">\n            <i [c8yIcon]=\"'warning'\" class=\"m-r-4 text-danger\"></i>\n            <em>{{ error }}</em>\n          </div>\n        </ng-template>\n      </div>\n      <ng-template #reportsSelect>\n        <div class=\"c8y-select-wrapper\">\n          <select formControlName=\"report\" name=\"report\" id=\"report\">\n            <option *ngFor=\"let report of visibleReports\" [ngValue]=\"report\">\n              {{ report.name }}\n            </option>\n          </select>\n        </div>\n      </ng-template>\n    </c8y-form-group>\n  </form>\n\n</div>",
+                template: "<div class=\"viewport-modal configSection\">\r\n  <div class='row'>\r\n    <div class=\"col-xs-3 col-md-3\">\r\n      <label for=\"Datahub URL\">\r\n        {{'DataHub URL'}}\r\n      </label>\r\n      <input type=\"text\" [(ngModel)]=\"config.datahubEndPoint\">\r\n    </div>\r\n    <div class=\"col-xs-1 col-md-1 col-lg-1\"></div>\r\n    <div class=\"col-xs-3 col-md-3\">\r\n      <label for=\"Power BI URL\">\r\n        {{'Power BI URL'}}\r\n      </label>\r\n      <input type=\"text\" [(ngModel)]=\"config.powerBIEndPoint\">\r\n    </div>\r\n    <div class=\"col-xs-1 col-md-1 col-lg-1\"></div>\r\n    <div class=\"col-xs-3 col-md-3\">\r\n\r\n      <button (click)=\"setUrlAndGetWorkspace()\" class=\"btn btn-primary\" style=\"margin-top: 24px;\r\n      line-height: 14px;\">\r\n        {{'Fetch Data'}}</button>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n    <div class=\"col-xs-3 col-md-3\">\r\n      <label class=\"c8y-checkbox checkbox-inline\" title=\"isFilterPaneEnabled\">\r\n        <input type=\"checkbox\" value=\"Add Stack\" [(ngModel)]=\"config.isFilterPaneEnabled\"\r\n          >\r\n        <span></span>\r\n        <span>{{'Filter Pane'}}</span>\r\n      </label>\r\n    </div>\r\n    <div class=\"col-xs-1 col-md-1 col-lg-1\"></div>\r\n    <div class=\"col-xs-3 col-md-3\">\r\n      <label class=\"c8y-checkbox checkbox-inline\" title=\"isNavPaneEnabled\">\r\n        <input type=\"checkbox\" value=\"Add Stack\" [(ngModel)]=\"config.isNavPaneEnabled\"\r\n          >\r\n        <span></span>\r\n        <span>{{'Nav Pane'}}</span>\r\n      </label>\r\n    </div>\r\n    \r\n  </div>\r\n  <div class=\"p-16 text-center separator-bottom\">\r\n    <p class=\"lead m-0\">{{'Select the workspace you want to access.' }}</p>\r\n    <p class=\"lead m-0\">{{'Select a report from the selected workspace.' }}</p>\r\n  </div>\r\n  <form [formGroup]=\"form\">\r\n    <c8y-form-group>\r\n      <label for=\"workspace\">\r\n        {{'Workspace'}}\r\n      </label>\r\n      <div class=\"c8y-select-wrapper\">\r\n        <select formControlName=\"workspace\" name=\"workspace\" id=\"workspace\">\r\n          <option *ngFor=\"let workspace of workspaces\" [ngValue]=\"workspace\">\r\n            {{ workspace.name }}\r\n          </option>\r\n        </select>\r\n      </div>\r\n    </c8y-form-group>\r\n    <c8y-form-group>\r\n      <label for=\"report\">\r\n        {{'Report' }}\r\n      </label>\r\n      <div *ngIf=\"visibleReports?.length === 0 || error || isLoading; else reportsSelect\">\r\n        <c8y-loading *ngIf=\"isLoading\"></c8y-loading>\r\n        <em *ngIf=\"!error && !isLoading; else errorMessage\"> No reports available for chosen workspace</em>\r\n        <ng-template #errorMessage>\r\n          <div *ngIf=\"error && !isLoading\">\r\n            <i [c8yIcon]=\"'warning'\" class=\"m-r-4 text-danger\"></i>\r\n            <em>{{ error }}</em>\r\n          </div>\r\n        </ng-template>\r\n      </div>\r\n      <ng-template #reportsSelect>\r\n        <div class=\"c8y-select-wrapper\">\r\n          <select formControlName=\"report\" name=\"report\" id=\"report\">\r\n            <option *ngFor=\"let report of visibleReports\" [ngValue]=\"report\">\r\n              {{ report.name }}\r\n            </option>\r\n          </select>\r\n        </div>\r\n      </ng-template>\r\n    </c8y-form-group>\r\n  </form>\r\n\r\n</div>",
                 styles: [".configSection{display:grid;border:1px solid rgba(0,0,0,.3);border-radius:4px;margin:.25em;padding:.25em}.row{padding:.5em}"]
             },] }
 ];
 GpPowerbiConfigComponent.ctorParameters = () => [
     { type: PowerBIService },
-    { type: _angular_forms__WEBPACK_IMPORTED_MODULE_7__["FormBuilder"] },
+    { type: _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormBuilder"] },
     { type: _c8y_ngx_components__WEBPACK_IMPORTED_MODULE_2__["AlertService"] },
-    { type: HttpService },
-    { type: _ngx_translate_core__WEBPACK_IMPORTED_MODULE_4__["TranslateService"] }
+    { type: HttpService }
 ];
 GpPowerbiConfigComponent.propDecorators = {
     config: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"] }]
@@ -629,14 +623,11 @@ GpPowerbiWidgetModule.decorators = [
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"], args: [{
                 declarations: [GpPowerbiWidgetComponent, GpPowerbiConfigComponent],
                 imports: [
-                    _c8y_ngx_components__WEBPACK_IMPORTED_MODULE_2__["CoreModule"], ngx_bootstrap_collapse__WEBPACK_IMPORTED_MODULE_9__["CollapseModule"], _angular_router__WEBPACK_IMPORTED_MODULE_8__["RouterModule"], _c8y_ngx_components__WEBPACK_IMPORTED_MODULE_2__["FormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_7__["ReactiveFormsModule"],
-                    _ngx_translate_core__WEBPACK_IMPORTED_MODULE_4__["TranslateModule"].forRoot()
+                    _c8y_ngx_components__WEBPACK_IMPORTED_MODULE_2__["CoreModule"], ngx_bootstrap_collapse__WEBPACK_IMPORTED_MODULE_8__["CollapseModule"], _angular_router__WEBPACK_IMPORTED_MODULE_7__["RouterModule"], _c8y_ngx_components__WEBPACK_IMPORTED_MODULE_2__["FormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_6__["ReactiveFormsModule"]
                 ],
                 providers: [
                     HttpService,
                     PowerBIService,
-                    _ngx_translate_core__WEBPACK_IMPORTED_MODULE_4__["TranslateService"],
-                    _ngx_translate_core__WEBPACK_IMPORTED_MODULE_4__["TranslateStore"],
                     {
                         provide: _c8y_ngx_components__WEBPACK_IMPORTED_MODULE_2__["HOOK_COMPONENTS"],
                         multi: true,
@@ -676,4 +667,4 @@ GpPowerbiWidgetModule.decorators = [
 /***/ })
 
 }]);
-//# sourceMappingURL=powerbi-runtime-widget-CustomWidget.4c9b924405df9802703d.js.map
+//# sourceMappingURL=powerbi-runtime-widget-CustomWidget.37eb4d794e50faf6468d.js.map

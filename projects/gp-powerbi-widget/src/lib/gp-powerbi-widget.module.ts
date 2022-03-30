@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 import { NgModule } from '@angular/core';
-import { HOOK_COMPONENTS, CoreModule, FormsModule as c8yFormsModule, C8yTranslateModule } from '@c8y/ngx-components';
+import { HOOK_COMPONENTS, CoreModule, FormsModule as c8yFormsModule } from '@c8y/ngx-components';
 import { GpPowerbiWidgetComponent } from './gp-powerbi-widget.component';
 import { HttpService } from './http.service';
 import { PowerBIService } from './powerbi.service';
@@ -24,21 +24,16 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { GpPowerbiConfigComponent } from './gp-powerbi-config/gp-powerbi-config.component';
-import { TranslateService,TranslateStore} from '@ngx-translate/core';
-import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
   declarations: [GpPowerbiWidgetComponent, GpPowerbiConfigComponent],
   imports: [
-    CoreModule, CollapseModule, RouterModule, c8yFormsModule, ReactiveFormsModule,
-    TranslateModule.forRoot()
+    CoreModule, CollapseModule, RouterModule, c8yFormsModule, ReactiveFormsModule
   ],
   providers: [
     HttpService,
     PowerBIService,
-    TranslateService,
-    TranslateStore,
     {
       provide: HOOK_COMPONENTS,
       multi: true,

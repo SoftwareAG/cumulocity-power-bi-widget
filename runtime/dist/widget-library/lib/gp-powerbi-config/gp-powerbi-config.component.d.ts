@@ -18,7 +18,6 @@
 import { OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AlertService } from '@c8y/ngx-components';
-import { TranslateService } from '@ngx-translate/core';
 import { Subject } from 'rxjs';
 import { HttpService } from '../http.service';
 import { PowerBIReportModalResult, PowerBIReports, PowerBIWorkspace } from '../powerbi.interface';
@@ -28,7 +27,6 @@ export declare class GpPowerbiConfigComponent implements OnInit {
     private fb;
     private alertService;
     private http;
-    private translateService;
     config: any;
     isFilterPaneEnabled: boolean;
     isNavPaneEnabled: boolean;
@@ -42,7 +40,7 @@ export declare class GpPowerbiConfigComponent implements OnInit {
     onClose: Subject<PowerBIReportModalResult>;
     modalResult: PowerBIReportModalResult;
     error: string;
-    constructor(powerbiService: PowerBIService, fb: FormBuilder, alertService: AlertService, http: HttpService, translateService: TranslateService);
+    constructor(powerbiService: PowerBIService, fb: FormBuilder, alertService: AlertService, http: HttpService);
     ngOnInit(): Promise<void>;
     setUrlAndGetWorkspace(): any;
     getReport(): Promise<any>;

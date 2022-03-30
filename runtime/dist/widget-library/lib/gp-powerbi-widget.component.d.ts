@@ -17,7 +17,6 @@
  */
 import { ElementRef, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { AlertService } from '@c8y/ngx-components';
-import { TranslateService } from '@ngx-translate/core';
 import { HttpService } from './http.service';
 import { EmbeddingInfo, PowerBIWorkspace } from './powerbi.interface';
 import { PowerBIService } from './powerbi.service';
@@ -25,7 +24,6 @@ export declare class GpPowerbiWidgetComponent implements OnInit, OnChanges {
     private powerbiService;
     private alertService;
     private http;
-    private translateService;
     private powerbi;
     reportContainer: ElementRef;
     embeddingInfo: EmbeddingInfo;
@@ -44,7 +42,7 @@ export declare class GpPowerbiWidgetComponent implements OnInit, OnChanges {
         token: any;
         name: any;
     };
-    constructor(powerbiService: PowerBIService, alertService: AlertService, http: HttpService, translateService: TranslateService);
+    constructor(powerbiService: PowerBIService, alertService: AlertService, http: HttpService);
     ngOnChanges(changes: SimpleChanges): Promise<void>;
     ngOnInit(): Promise<void>;
     private embedReport;

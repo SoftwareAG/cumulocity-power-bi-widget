@@ -72,7 +72,6 @@ module.exports = {
                 "@angular/router": "AngularRouter",
                 "@c8y/client": "C8yClient",
                 "@c8y/ngx-components": "C8yNgxComponents",
-                // "@ngx-translate/core": "NgxTranslateCore",
             },
         })
     ],

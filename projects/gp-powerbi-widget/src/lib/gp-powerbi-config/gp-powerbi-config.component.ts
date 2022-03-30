@@ -18,7 +18,6 @@
 import { Component, Input, isDevMode, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertService, gettext } from '@c8y/ngx-components';
-import { TranslateService } from '@ngx-translate/core';
 import { Subject } from 'rxjs';
 import { HttpService } from '../http.service';
 import { EmbeddingInfo, PowerBIReportModalResult, PowerBIReports, PowerBIWorkspace } from '../powerbi.interface';
@@ -52,8 +51,7 @@ export class GpPowerbiConfigComponent implements OnInit {
     private powerbiService: PowerBIService,
     private fb: FormBuilder,
     private alertService: AlertService,
-    private http: HttpService,
-    private translateService: TranslateService
+    private http: HttpService
   ) {
     this.form = this.fb.group({
       workspace: this.fb.control(null, Validators.required),
@@ -187,7 +185,7 @@ export class GpPowerbiConfigComponent implements OnInit {
               throw Error();
             }
           } catch (e) {
-            this.error = this.translateService.instant(gettext('Fetching reports for workspace failed.'));
+            this.error = 'Fetching reports for workspace failed.';
           } finally {
             this.isLoading = false;
           }
@@ -214,7 +212,7 @@ export class GpPowerbiConfigComponent implements OnInit {
               throw Error();
             }
           } catch (e) {
-            this.error = this.translateService.instant(gettext('Fetching reports for workspace failed.'));
+            this.error = 'Fetching reports for workspace failed.';
           } finally {
             this.isLoading = false;
           }
