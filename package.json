@@ -1,6 +1,9 @@
 {
   "name": "cumulocity-powerbi-widget",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "This is an Angular 11 widget, which is designed to display the PowerBI reports created from Datahub offloading.",
+  "author": "Neeru Arora - Software AG, Global Presales",
+  "license": "Apache 2.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -29,8 +32,6 @@
     "@c8y/ng1-modules": "^1011.0.12",
     "@c8y/ngx-components": "^1011.0.12",
     "@c8y/style": "^1011.0.12",
-    "app-constants": "^1.0.0",
-    "app-utils": "^0.1.0",
     "powerbi-client": "^2.19.1",
     "rxjs": "~6.6.3",
     "tslib": "^2.0.0",

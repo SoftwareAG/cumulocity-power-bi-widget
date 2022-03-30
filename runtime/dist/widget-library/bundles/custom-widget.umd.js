@@ -1,8 +1,8 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@c8y/ngx-components'), require('powerbi-client'), require('@c8y/client'), require('@angular/forms'), require('@ngx-translate/core'), require('rxjs'), require('@angular/router'), require('ngx-bootstrap/collapse')) :
-    typeof define === 'function' && define.amd ? define('powerbi-runtime-widget', ['exports', '@angular/core', '@c8y/ngx-components', 'powerbi-client', '@c8y/client', '@angular/forms', '@ngx-translate/core', 'rxjs', '@angular/router', 'ngx-bootstrap/collapse'], factory) :
-    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global["powerbi-runtime-widget"] = {}, global.ng.core, global["@c8y/ngx-components"], global.pbiClient, global.client, global.ng.forms, global.core$1, global.rxjs, global.ng.router, global.collapse));
-})(this, (function (exports, core, ngxComponents, pbiClient, client, forms, core$1, rxjs, router, collapse) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@c8y/ngx-components'), require('powerbi-client'), require('@c8y/client'), require('@angular/forms'), require('@angular/router'), require('ngx-bootstrap/collapse'), require('rxjs')) :
+    typeof define === 'function' && define.amd ? define('powerbi-runtime-widget', ['exports', '@angular/core', '@c8y/ngx-components', 'powerbi-client', '@c8y/client', '@angular/forms', '@angular/router', 'ngx-bootstrap/collapse', 'rxjs'], factory) :
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global["powerbi-runtime-widget"] = {}, global.ng.core, global["@c8y/ngx-components"], global.pbiClient, global.client, global.ng.forms, global.ng.router, global.collapse, global.rxjs));
+})(this, (function (exports, core, ngxComponents, pbiClient, client, forms, router, collapse, rxjs) { 'use strict';
 
     function _interopNamespace(e) {
         if (e && e.__esModule) return e;
@@ -343,11 +343,10 @@
     }
 
     var HttpService = /** @class */ (function () {
-        function HttpService(fetchClient, optionsService) {
+        function HttpService(fetchClient) {
             this.fetchClient = fetchClient;
-            this.optionsService = optionsService;
             this.path = null;
-            this.path = this.optionsService.get('cdhContextPath');
+            this.path = '';
         }
         HttpService.prototype.Get = function (endPoint, params, headers) {
             if (headers === void 0) { headers = { accept: 'application/json' }; }
@@ -404,14 +403,13 @@
         { type: core.Injectable }
     ];
     HttpService.ctorParameters = function () { return [
-        { type: client.FetchClient },
-        { type: ngxComponents.OptionsService }
+        { type: client.FetchClient }
     ]; };
 
     var PowerBIService = /** @class */ (function () {
         function PowerBIService(http) {
             this.http = http;
-            this.path = '/service/datahub/powerbi';
+            this.path = '';
             this.configRequested = false;
             this.cachedInfo = JSON.parse(JSON.stringify(PowerBIService.cachedInfoDefault));
         }
@@ -533,17 +531,17 @@
     ]; };
 
     var GpPowerbiWidgetComponent = /** @class */ (function () {
-        function GpPowerbiWidgetComponent(powerbiService, alertService) {
+        function GpPowerbiWidgetComponent(powerbiService, alertService, http) {
             this.powerbiService = powerbiService;
             this.alertService = alertService;
+            this.http = http;
             this.powerbi = new pbiClient__namespace.service.Service(pbiClient__namespace.factories.hpmFactory, pbiClient__namespace.factories.wpmpFactory, pbiClient__namespace.factories.routerFactory);
             this.workspaces = [];
             this.settingsNotDefined = false;
             this.isLoading = false;
-            // public AppUtils = AppUtils;
             this.embedUrl = 'https://app.powerbi.com/reportEmbed';
         }
-        // When changes are pushed from host component to report component, component is reinitialized to show a different report. 
+        // When changes are pushed from host component to report component, component is reinitialized to show a different report.
         // This may not be needed in customer scenario
         GpPowerbiWidgetComponent.prototype.ngOnChanges = function (changes) {
             return __awaiter(this, void 0, void 0, function () {
@@ -562,206 +560,495 @@
         };
         GpPowerbiWidgetComponent.prototype.ngOnInit = function () {
             return __awaiter(this, void 0, void 0, function () {
+                var e_1;
                 return __generator(this, function (_a) {
-                    try {
-                        this.embedReport();
+                    switch (_a.label) {
+                        case 0:
+                            _a.trys.push([0, 2, , 3]);
+                            this.http.path = this.config.datahubEndPoint;
+                            this.powerbiService.path = this.config.powerBIEndPoint;
+                            return [4 /*yield*/, this.loadReport(this.config)];
+                        case 1:
+                            _a.sent();
+                            return [3 /*break*/, 3];
+                        case 2:
+                            e_1 = _a.sent();
+                            this.alertService.danger('Failed to load report.');
+                            return [3 /*break*/, 3];
+                        case 3:
+                            try {
+                                // tslint:disable-next-line:max-line-length
+                                this.embedReport(this.embeddingInfo.reportId, this.embeddingInfo.embeddingToken, this.config.isFilterPaneEnabled, this.config.isNavPaneEnabled);
+                            }
+                            catch (e) {
+                                // this.alertService.danger('Failed to fetch embedding token.');
+                                this.alertService.danger('Failed to fetch embedding token.');
+                            }
+                            return [2 /*return*/];
                     }
-                    catch (e) {
-                        this.alertService.danger('Failed to fetch embedding token.');
-                        // this.alertService.danger(this.translateService.instant(gettext('Failed to fetch embedding token.')));
-                    }
-                    return [2 /*return*/];
                 });
             });
         };
         // This is where the Power BI client is actually used - parametrize the config however you like
         GpPowerbiWidgetComponent.prototype.embedReport = function (reportId, token, filterPanelEnabled, navPanelEnabled) {
             var _this = this;
-            // const config = {
-            //   type: 'report',
-            //   id: reportId,
-            //   embedUrl: this.embedUrl,
-            //   tokenType: pbiClient.models.TokenType.Embed,
-            //   accessToken: token,
-            //   //permissions: pbi.models.Permissions.Read,
-            //   settings: {
-            // 		// The option is called filterPaneEnabled, there is a typo in the method parameter name
-            //     filterPaneEnabled: filterPanelEnabled,
-            // 		// Same as filterPaneEnabled
-            //     navContentPaneEnabled: navPanelEnabled,
-            //     background: pbiClient.models.BackgroundType.Transparent
-            //   }
-            // };
-            var config = {
+            var embedConfig = {
                 type: 'report',
-                id: '1f7c1d48-10cd-4af6-89fc-6891347bb42f',
-                embedUrl: 'https://app.powerbi.com/reportEmbed?reportId=1f7c1d48-10cd-4af6-89fc-6891347bb42f&groupId=8341efa8-fe16-4402-a9f7-9f60edb11aff&w=2&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly9XQUJJLVdFU1QtRVVST1BFLUItUFJJTUFSWS1yZWRpcmVjdC5hbmFseXNpcy53aW5kb3dzLm5ldCIsImVtYmVkRmVhdHVyZXMiOnsibW9kZXJuRW1iZWQiOnRydWUsImFuZ3VsYXJPbmx5UmVwb3J0RW1iZWQiOnRydWUsImNlcnRpZmllZFRlbGVtZXRyeUVtYmVkIjp0cnVlLCJ1c2FnZU1ldHJpY3NWTmV4dCI6dHJ1ZSwic2tpcFpvbmVQYXRjaCI6dHJ1ZX19',
+                id: reportId,
+                embedUrl: this.embedUrl,
                 tokenType: pbiClient__namespace.models.TokenType.Embed,
-                accessToken: 'H4sIAAAAAAAEAB2Uxw6rWBZF_-VNKcmYTEk1AF9yzmFGuCaDSSa0-t_bXfM9ONprnf2fP3Z29VNW_vn7D1_jDRxWlvOajIq3fbX0FbkFWPNVW23noNHXcuC0C5tAue4OiFUz0MHouOudDSp5VVWS2QWPok6y5Fmveu2eR49SxmXbkgmk0WSKRPjAw0_eL-c7GfDmFRTcJDdQSOdWvAPSqUcENSy5HpULfjWzPkZoG7OTKdeDvP26eTfq23HLyrRe3_5d9BZmt9jytax0G09bOil33PJEc8axXyDpF-73eR6AeazMcLRhOPJ0NiKWoi5m7aWI2JfH6gSx9Jhd7cp7gzHUNn8Qkx-ICA-GiG3tD6D7yTT2SHSHMPcbdOnKr3hJwH2-FSZXkK9YrlWzBjRXbOT41t4FofL1aqQgfR5oR-mGBFSgNiG1vM-Y94W1rR7Z7c1e4oQWKks98GKkH50xj71z_SiH5tPfcnqjIFLcgLCZNzHpesV6gVmnIP9AupWsgAht5iTTmYvxEKRlelo9b68K7xK5-3r5Mv8g6hT_IGq1PLTJSrOOyy2_Z8kifc4ulwH-GXdUyULhaTC8_yKrDHAYT4nWjmFma3SYnmsZLdZNTr4HKu0RnQ2ExY2JBDSPmgFBMRRsWiQwXFJHudyyw0SUxhh523-AJhtrWjp9WeQOCYkQpkXbIdVJZnMHakpHV5SNFVXHppoUwEhGy2FeSkR0Aoz80ihDA3YN2CGmyGOPu0tZTpOz65Kg8tvqU5XRsShoyTft-iMIYTRmoiiXaTQn1TVEJv7NamCktEunqYuSNcofbYIvdaFgzWBe6z9__vrzWq7PNmnw-qmvUHc06v1KwfWrB4zCf60i1X2_VSC1J83ax1tRy2qjVcSrmLJLfMnz-bvHqxA8QpeQjnxD-xzjRKWYSxRP-Wi63MaOPBLLTlNopgy8xOf4mbBp5_V8RCjNdk2L7lD6IozY_J7hdVx-awIsUK0owFj-CI03pw6Ru9_lw3t9h6ifOqTiHjirXazTQORz2Y7n2gxktUh210GQvBmGnzaAET1yEoxJVK5J82HKcHKqUYp8_OQob7rGj4k9Z36rdF29bnR7J3tI7ivN8BRGSoxvLV3hpR4tsHzRR8ItYc-47m8tAUlHc9Ao8OVLpQGlKvOnUYz1B1Q2F2oR3K6tQhbHsMWrbfX459-ar08NFyX8tdxx4me0H_LFK4aMWFbw-caf6t-U11Rjtu0L_MWmGOtv-9RU3HaL0cKTtujrmo3fmhUqd6UoFembjtFRggaDgaEv8dA0ZTs8GtAEG-8moWFPy944sCshkREohv3WZiveCgAJXeiX7s5sPJ-LRiFzpoe7nX6J7HnyCuNQLSB-C0VNSVNDbnd8GrvLCeSYu9KhtWyIMhu-GxdL8jRucy6rtYfjS13vRWeCjQioZRS349YiUYiIgVUrt_7Z6jpH6qGsZNGBqTUEELy-FvhIyrr-7PMz1bgtgI8pcyuweIvx_CmDMLQVSEu8P22qsqele_kWSPJcaHVJGZr0yDHcfw0zQzcUdpwCDpiy9a4NHcPqyBiDiGz0DZJbvFADSYr6_zD--z-RGtQG7gUAAA==.eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly9XQUJJLVdFU1QtRVVST1BFLUItUFJJTUFSWS1yZWRpcmVjdC5hbmFseXNpcy53aW5kb3dzLm5ldCIsImVtYmVkRmVhdHVyZXMiOnsibW9kZXJuRW1iZWQiOmZhbHNlfX0=',
-                //permissions: pbi.models.Permissions.Read,
+                accessToken: token,
+                // permissions: pbi.models.Permissions.Read,
                 settings: {
                     // The option is called filterPaneEnabled, there is a typo in the method parameter name
-                    filterPaneEnabled: true,
+                    filterPaneEnabled: filterPanelEnabled,
                     // Same as filterPaneEnabled
-                    navContentPaneEnabled: true,
+                    navContentPaneEnabled: navPanelEnabled,
                     background: pbiClient__namespace.models.BackgroundType.Transparent
                 }
             };
             var reportContainer = this.reportContainer.nativeElement;
             this.powerbi.reset(reportContainer);
-            var report = this.powerbi.embed(reportContainer, config);
+            var report = this.powerbi.embed(reportContainer, embedConfig);
             report.off('error');
             report.on('error', function (error) {
-                _this.alertService.danger('Failed to embed report.'
-                // this.translateService.instant(gettext('Failed to embed report.'))
-                );
+                _this.alertService.danger('Failed to embed report.');
+            });
+        };
+        // Load the report based on worspace selected
+        // sets the report ID and token
+        GpPowerbiWidgetComponent.prototype.loadReport = function (config) {
+            return __awaiter(this, void 0, void 0, function () {
+                var token;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0:
+                            this.workspaceID = this.config.workspaceSelected.id;
+                            this.reportID = this.config.reportSelected.id;
+                            this.reportName = this.config.reportSelected.name;
+                            return [4 /*yield*/, this.getToken(this.reportID, this.workspaceID, this.reportName)];
+                        case 1:
+                            token = _a.sent();
+                            if (token) {
+                                this.embeddingInfo = {
+                                    reportId: this.reportID,
+                                    embeddingToken: token
+                                };
+                            }
+                            return [2 /*return*/];
+                    }
+                });
+            });
+        };
+        // Fetch the token for selected report and workspace
+        GpPowerbiWidgetComponent.prototype.getToken = function (reportId, workspaceId, reportName) {
+            return __awaiter(this, void 0, void 0, function () {
+                var tokenRequest, payload, e_2;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0:
+                            _a.trys.push([0, 5, , 6]);
+                            return [4 /*yield*/, this.powerbiService.embedReport(this.workspaceID, this.reportID)];
+                        case 1:
+                            tokenRequest = _a.sent();
+                            if (!(tokenRequest.status === 200)) return [3 /*break*/, 3];
+                            return [4 /*yield*/, tokenRequest.json()];
+                        case 2:
+                            payload = _a.sent();
+                            if (payload.status === 'SUCCEEDED') {
+                                this.embeddedReport = payload.data;
+                                this.reportToDisplay = {
+                                    id: reportId,
+                                    workspaceId: workspaceId,
+                                    token: this.embeddedReport.token,
+                                    name: reportName
+                                };
+                                return [2 /*return*/, this.embeddedReport.token];
+                            }
+                            else {
+                                this.alertService.danger('Error in payload');
+                                throw Error();
+                            }
+                            return [3 /*break*/, 4];
+                        case 3:
+                            this.alertService.danger('Error in tokenRequest');
+                            throw Error();
+                        case 4: return [3 /*break*/, 6];
+                        case 5:
+                            e_2 = _a.sent();
+                            this.alertService.danger('An error occurred while fetching the embedding token for the report.');
+                            return [3 /*break*/, 6];
+                        case 6: return [2 /*return*/];
+                    }
+                });
             });
         };
         return GpPowerbiWidgetComponent;
     }());
     GpPowerbiWidgetComponent.decorators = [
         { type: core.Component, args: [{
-                    selector: 'lib-gp-powerbi-widget',
-                    template: "Hello Power BI\r\n<div>\r\n  <lib-gp-powerbi-config></lib-gp-powerbi-config>\r\n</div>\r\n<div class=\"card content-fullpage\" >\r\n    <div class=\"d-flex d-col inner-scroll fit-h\">\r\n    <div class=\"card-header separator sticky-top\">\r\n        <h4>\r\n\t\t\t\t<!-- We are doing some decoding of the report name due to the way we store the report name in the application \r\n\t\t\t\t\tDecoding may not be needed -->\r\n            <!-- {{\r\n          AppUtils.decodeUriComponent(reportName) !== reportName ?\r\n            AppUtils.decodeUriComponent(reportName) :\r\n            reportName\r\n            }} -->\r\n            Power Bi Report\r\n        </h4>\r\n    </div>\r\n    <div class=\"flex-grow p-16\">\r\n      <div class=\"powerbi-report\" id=\"reportContainer\" #reportContainer>\r\n        <c8y-loading></c8y-loading>\r\n      </div>\r\n    </div>\r\n    </div>\r\n</div>\r\n"
+                    selector: 'gp-powerbi-widget',
+                    template: "\r\n<div class=\"card content-fullpage\" style=\"height: 100%;\">\r\n    <div class=\"d-flex d-col inner-scroll fit-h\">\r\n    <div class=\"card-header separator sticky-top\">\r\n        <h4>\r\n\t\t\t\t<!-- We are doing some decoding of the report name due to the way we store the report name in the application \r\n\t\t\t\t\tDecoding may not be needed -->\r\n            <!-- {{\r\n          AppUtils.decodeUriComponent(reportName) !== reportName ?\r\n            AppUtils.decodeUriComponent(reportName) :\r\n            reportName\r\n            }}  -->\r\n\r\n            {{reportName}}\r\n            Power Bi Report\r\n        </h4>\r\n    </div>\r\n    <div class=\"flex-grow p-16\" style=\"height: 100%;\">\r\n      <div class=\"powerbi-report\" style=\"height: inherit;\" id=\"reportContainer\" #reportContainer>\r\n        <c8y-loading></c8y-loading>\r\n      </div>\r\n    </div>\r\n    </div>\r\n</div>\r\n"
                 },] }
     ];
     GpPowerbiWidgetComponent.ctorParameters = function () { return [
         { type: PowerBIService },
-        { type: ngxComponents.AlertService }
+        { type: ngxComponents.AlertService },
+        { type: HttpService }
     ]; };
     GpPowerbiWidgetComponent.propDecorators = {
         reportContainer: [{ type: core.ViewChild, args: ['reportContainer', { static: true },] }],
-        embeddingInfo: [{ type: core.Input }],
-        reportName: [{ type: core.Input }]
+        config: [{ type: core.Input }]
     };
 
     var GpPowerbiConfigComponent = /** @class */ (function () {
-        function GpPowerbiConfigComponent(powerbiService, 
-        // public bsModalRef: BsModalRef,
-        fb, translateService) {
+        function GpPowerbiConfigComponent(powerbiService, fb, alertService, http) {
             this.powerbiService = powerbiService;
             this.fb = fb;
-            this.translateService = translateService;
+            this.alertService = alertService;
+            this.http = http;
+            this.config = {
+                powerBIEndPoint: '',
+                datahubEndPoint: ''
+            };
+            this.isFilterPaneEnabled = false;
+            this.isNavPaneEnabled = false;
             this.workspaceIndex = 0;
             this.isLoading = false;
+            this.testUrl = 'hello';
             this.onClose = new rxjs.Subject();
             this.modalResult = {
                 workspaceId: null,
                 report: null
             };
             this.error = '';
+            this.form = this.fb.group({
+                workspace: this.fb.control(null, forms.Validators.required),
+                report: this.fb.control(null, forms.Validators.required)
+            });
         }
         GpPowerbiConfigComponent.prototype.ngOnInit = function () {
             return __awaiter(this, void 0, void 0, function () {
-                var configFetchResponse, workspacesFetchResult, workspaces;
-                var _this = this;
-                return __generator(this, function (_a) {
-                    switch (_a.label) {
+                return __generator(this, function (_b) {
+                    if (!this.config.isNavPaneEnabled) {
+                        this.config.isNavPaneEnabled = false;
+                    }
+                    if (this.config.powerBIEndPoint === '') {
+                        this.config.powerBIEndPoint = '/powerbi';
+                    }
+                    else {
+                        if (core.isDevMode()) {
+                            console.log(this.config.powerBIEndPoint);
+                        }
+                    }
+                    if (this.config.datahubEndPoint === '') {
+                        this.config.datahubEndPoint = '/service/datahub';
+                    }
+                    else {
+                        if (core.isDevMode()) {
+                            console.log(this.config.datahubEndPoint);
+                        }
+                    }
+                    if (this.config.datahubEndPoint !== '/service/datahub' || this.config.powerBIEndPoint !== '/powerbi') {
+                        this.setUrlAndGetWorkspace();
+                    }
+                    else {
+                        this.http.path = this.config.datahubEndPoint;
+                        this.powerbiService.path = this.config.powerBIEndPoint;
+                        this.getReport();
+                    }
+                    return [2 /*return*/];
+                });
+            });
+        };
+        // If user updates datahub or PowerBI url
+        // then use that and update the path in http service and powerbi service
+        // and fetch list of workspaces and reports available if any
+        GpPowerbiConfigComponent.prototype.setUrlAndGetWorkspace = function () {
+            if (core.isDevMode()) {
+                console.log('setUrlAndGetWorkspace Config URL', this.config.powerBIEndPoint, this.config, this.config.datahubEndPoint);
+            }
+            this.http.path = this.config.datahubEndPoint;
+            this.powerbiService.path = this.config.powerBIEndPoint;
+            this.getReport();
+        };
+        // fetch the exisiting selected value of workspace and report if available
+        // and list of workspaces and reports available if any
+        GpPowerbiConfigComponent.prototype.getReport = function () {
+            return __awaiter(this, void 0, void 0, function () {
+                var configFetchResponse, config, workspacesFetchResult, reports, selectedWorkspaceIndex;
+                return __generator(this, function (_b) {
+                    switch (_b.label) {
                         case 0: return [4 /*yield*/, this.powerbiService.getConfig()];
                         case 1:
-                            configFetchResponse = _a.sent();
-                            console.log('fetchReponse', configFetchResponse);
-                            return [4 /*yield*/, this.powerbiService.listWorkspaces()];
+                            configFetchResponse = _b.sent();
+                            if (!(configFetchResponse.status === 200)) return [3 /*break*/, 3];
+                            return [4 /*yield*/, configFetchResponse.json()];
                         case 2:
-                            workspacesFetchResult = _a.sent();
-                            console.log('listWorkspaces', workspacesFetchResult);
-                            this.form = this.fb.group({
-                                workspace: this.fb.control(this.workspaces[0], forms.Validators.required),
-                                report: this.fb.control(this.reports[0].length > 0 ? this.reports[0][0] : null, forms.Validators.required)
-                            });
-                            this.visibleReports = this.reports[0];
-                            workspaces = this.workspaces.slice(1, this.workspaces.length);
-                            workspaces.forEach(function () {
-                                _this.reports.push(null);
-                            });
-                            this.form.controls.workspace.valueChanges.subscribe(function (workspaceValue) { return __awaiter(_this, void 0, void 0, function () {
-                                var workspaceIndex, reportsFetchResult, payload, e_1;
-                                return __generator(this, function (_a) {
-                                    switch (_a.label) {
-                                        case 0:
-                                            workspaceIndex = this.workspaces.findIndex(function (workspace) { return workspace === workspaceValue; });
-                                            if (!(workspaceIndex >= 0)) return [3 /*break*/, 11];
-                                            if (!(this.reports[workspaceIndex] === null)) return [3 /*break*/, 9];
-                                            _a.label = 1;
-                                        case 1:
-                                            _a.trys.push([1, 6, 7, 8]);
-                                            this.error = '';
-                                            this.isLoading = true;
-                                            return [4 /*yield*/, this.powerbiService.listReports(this.workspaces[workspaceIndex].id)];
-                                        case 2:
-                                            reportsFetchResult = _a.sent();
-                                            if (!(reportsFetchResult.status === 200)) return [3 /*break*/, 4];
-                                            return [4 /*yield*/, reportsFetchResult.json()];
-                                        case 3:
-                                            payload = _a.sent();
-                                            if (payload.status === 'SUCCEEDED') {
-                                                this.reports[workspaceIndex] = payload.data;
-                                                if (this.reports[workspaceIndex].length > 0) {
-                                                    this.form.controls.report.setValue(this.reports[workspaceIndex][0]);
-                                                }
-                                                else {
-                                                    this.form.controls.report.setValue(null);
-                                                }
-                                                this.form.updateValueAndValidity();
-                                            }
-                                            else {
-                                                throw Error();
-                                            }
-                                            return [3 /*break*/, 5];
-                                        case 4:
-                                            this.form.controls.report.setValue(null);
-                                            throw Error();
-                                        case 5: return [3 /*break*/, 8];
-                                        case 6:
-                                            e_1 = _a.sent();
-                                            this.error = this.translateService.instant(ngxComponents.gettext('Fetching reports for workspace failed.'));
-                                            return [3 /*break*/, 8];
-                                        case 7:
-                                            this.isLoading = false;
-                                            return [7 /*endfinally*/];
-                                        case 8: return [3 /*break*/, 10];
-                                        case 9:
-                                            this.error = '';
-                                            this.form.controls.report.setValue(this.reports[workspaceIndex][0].id);
-                                            _a.label = 10;
-                                        case 10:
-                                            this.visibleReports = this.reports[workspaceIndex];
-                                            this.workspaceIndex = workspaceIndex;
-                                            _a.label = 11;
-                                        case 11: return [2 /*return*/];
-                                    }
-                                });
-                            }); });
-                            return [2 /*return*/];
+                            config = _b.sent();
+                            return [3 /*break*/, 4];
+                        case 3:
+                            this.alertService.danger('Cannot find the Path');
+                            _b.label = 4;
+                        case 4: return [4 /*yield*/, this.powerbiService.listWorkspaces()];
+                        case 5:
+                            workspacesFetchResult = _b.sent();
+                            if (!(workspacesFetchResult.status === 200)) return [3 /*break*/, 10];
+                            return [4 /*yield*/, workspacesFetchResult.json()];
+                        case 6:
+                            reports = _b.sent();
+                            if (!(reports.status === 'SUCCEEDED')) return [3 /*break*/, 10];
+                            this.workspaces = reports.data;
+                            if (!(this.workspaces.length === 0)) return [3 /*break*/, 7];
+                            this.alertService.danger('Cannot select report because no workspaces are available.');
+                            return [3 /*break*/, 9];
+                        case 7:
+                            selectedWorkspaceIndex = this.extractWorkspaceIndex();
+                            return [4 /*yield*/, this.fetchReportsForFirstWorkspaceAndShow(selectedWorkspaceIndex)];
+                        case 8:
+                            _b.sent();
+                            this.initForm();
+                            _b.label = 9;
+                        case 9: return [3 /*break*/, 10];
+                        case 10: return [2 /*return*/];
                     }
                 });
             });
         };
-        GpPowerbiConfigComponent.prototype.close = function () {
-            // this.bsModalRef.hide();
+        GpPowerbiConfigComponent.prototype.extractWorkspaceIndex = function () {
+            var _this = this;
+            var workspaceIndex = this.workspaces.findIndex(function (workspace) { return workspace.id === _this.config.workspaceSelected.id; });
+            return workspaceIndex;
         };
-        GpPowerbiConfigComponent.prototype.save = function () {
-            this.modalResult.workspaceId = this.form.controls.workspace.value.id;
-            this.modalResult.report = this.form.controls.report.value;
-            this.modalResult.report.workspaceId = this.modalResult.workspaceId;
-            this.onClose.next(this.modalResult);
-            // this.bsModalRef.hide();
+        GpPowerbiConfigComponent.prototype.extractReportIndex = function () {
+            var _this = this;
+            var reportIndex = this.reports[0].findIndex(function (report, index) {
+                if (report.id === _this.config.reportSelected.id) {
+                    return 1;
+                }
+                else {
+                    if (core.isDevMode()) {
+                        console.log('no matching in reports');
+                    }
+                }
+            });
+            return reportIndex;
+        };
+        // Show the selected value in form and update the values selected in config
+        // workspace and report
+        GpPowerbiConfigComponent.prototype.initForm = function () {
+            var _this = this;
+            var selectedWorkspaceIndex = this.extractWorkspaceIndex();
+            var selectedReportIndex = this.extractReportIndex();
+            if (selectedWorkspaceIndex) {
+                this.form = this.fb.group({
+                    workspace: this.fb.control(this.workspaces[selectedWorkspaceIndex], forms.Validators.required),
+                    report: this.fb.control(this.reports[0].length > 0 ? this.reports[0][selectedReportIndex] : null, forms.Validators.required)
+                });
+            }
+            else {
+                this.form = this.fb.group({
+                    workspace: this.fb.control(this.workspaces[0], forms.Validators.required),
+                    report: this.fb.control(this.reports[0].length > 0 ? this.reports[0][0] : null, forms.Validators.required)
+                });
+            }
+            this.visibleReports = this.reports[0];
+            var workspaces = this.workspaces.slice(1, this.workspaces.length);
+            workspaces.forEach(function () {
+                _this.reports.push(null);
+            });
+            this.config.reportSelected = this.form.controls.report.value;
+            this.config.workspaceSelected = this.form.controls.workspace.value;
+            this.form.controls.workspace.valueChanges.subscribe(function (workspaceValue) { return __awaiter(_this, void 0, void 0, function () {
+                var workspaceIndex, reportsFetchResult, payload, e_1, reportsFetchResult, payload, e_2;
+                return __generator(this, function (_b) {
+                    switch (_b.label) {
+                        case 0:
+                            workspaceIndex = this.workspaces.findIndex(function (workspace) { return workspace === workspaceValue; });
+                            if (!(workspaceIndex >= 0)) return [3 /*break*/, 18];
+                            if (!(this.reports[workspaceIndex] === null)) return [3 /*break*/, 9];
+                            _b.label = 1;
+                        case 1:
+                            _b.trys.push([1, 6, 7, 8]);
+                            this.error = '';
+                            this.isLoading = true;
+                            return [4 /*yield*/, this.powerbiService.listReports(this.workspaces[workspaceIndex].id)];
+                        case 2:
+                            reportsFetchResult = _b.sent();
+                            if (!(reportsFetchResult.status === 200)) return [3 /*break*/, 4];
+                            return [4 /*yield*/, reportsFetchResult.json()];
+                        case 3:
+                            payload = _b.sent();
+                            if (payload.status === 'SUCCEEDED') {
+                                this.reports[workspaceIndex] = payload.data;
+                                if (this.reports[workspaceIndex].length > 0) {
+                                    this.form.controls.workspace.setValue(this.workspaces[workspaceIndex]);
+                                    this.form.controls.report.setValue(this.reports[workspaceIndex][0]);
+                                }
+                                else {
+                                    this.form.controls.report.setValue(null);
+                                }
+                                this.form.updateValueAndValidity();
+                            }
+                            else {
+                                throw Error();
+                            }
+                            return [3 /*break*/, 5];
+                        case 4:
+                            this.form.controls.report.setValue(null);
+                            throw Error();
+                        case 5: return [3 /*break*/, 8];
+                        case 6:
+                            e_1 = _b.sent();
+                            this.error = 'Fetching reports for workspace failed.';
+                            return [3 /*break*/, 8];
+                        case 7:
+                            this.isLoading = false;
+                            return [7 /*endfinally*/];
+                        case 8: return [3 /*break*/, 17];
+                        case 9:
+                            _b.trys.push([9, 14, 15, 16]);
+                            this.error = '';
+                            this.isLoading = true;
+                            return [4 /*yield*/, this.powerbiService.listReports(this.workspaces[workspaceIndex].id)];
+                        case 10:
+                            reportsFetchResult = _b.sent();
+                            if (!(reportsFetchResult.status === 200)) return [3 /*break*/, 12];
+                            return [4 /*yield*/, reportsFetchResult.json()];
+                        case 11:
+                            payload = _b.sent();
+                            if (payload.status === 'SUCCEEDED') {
+                                this.reports[workspaceIndex] = payload.data;
+                                if (this.reports[workspaceIndex].length > 0) {
+                                    this.form.controls.report.setValue(this.reports[workspaceIndex][0]);
+                                }
+                                else {
+                                    this.form.controls.report.setValue(null);
+                                }
+                                this.form.updateValueAndValidity();
+                            }
+                            else {
+                                throw Error();
+                            }
+                            return [3 /*break*/, 13];
+                        case 12:
+                            this.form.controls.report.setValue(null);
+                            throw Error();
+                        case 13: return [3 /*break*/, 16];
+                        case 14:
+                            e_2 = _b.sent();
+                            this.error = 'Fetching reports for workspace failed.';
+                            return [3 /*break*/, 16];
+                        case 15:
+                            this.isLoading = false;
+                            return [7 /*endfinally*/];
+                        case 16:
+                            this.error = '';
+                            _b.label = 17;
+                        case 17:
+                            this.visibleReports = this.reports[workspaceIndex];
+                            this.workspaceIndex = workspaceIndex;
+                            this.config.workspaceSelected = this.form.controls.workspace.value;
+                            _b.label = 18;
+                        case 18: return [2 /*return*/];
+                    }
+                });
+            }); });
+            // Form change on report selection
+            this.form.controls.report.valueChanges.subscribe(function (reportValue) { return __awaiter(_this, void 0, void 0, function () {
+                var reportIndex;
+                return __generator(this, function (_b) {
+                    reportIndex = this.reports.findIndex(function (report) { return report === reportValue; });
+                    this.config.reportSelected = reportValue;
+                    return [2 /*return*/];
+                });
+            }); });
+        };
+        // Fetch the Reports for Workspace and show those
+        GpPowerbiConfigComponent.prototype.fetchReportsForFirstWorkspaceAndShow = function (configWorkspaceIndex) {
+            return __awaiter(this, void 0, void 0, function () {
+                var reportsFetchResult, payload, initialState, _a_1, msg;
+                return __generator(this, function (_b) {
+                    switch (_b.label) {
+                        case 0:
+                            _b.trys.push([0, 8, , 9]);
+                            reportsFetchResult = void 0;
+                            if (!configWorkspaceIndex) return [3 /*break*/, 2];
+                            return [4 /*yield*/, this.powerbiService.listReports(this.workspaces[configWorkspaceIndex].id)];
+                        case 1:
+                            reportsFetchResult = _b.sent();
+                            return [3 /*break*/, 4];
+                        case 2: return [4 /*yield*/, this.powerbiService.listReports(this.workspaces[0].id)];
+                        case 3:
+                            reportsFetchResult = _b.sent();
+                            _b.label = 4;
+                        case 4:
+                            if (!(reportsFetchResult.status === 200)) return [3 /*break*/, 6];
+                            return [4 /*yield*/, reportsFetchResult.json()];
+                        case 5:
+                            payload = _b.sent();
+                            // If there is data in response
+                            if (payload.status === 'SUCCEEDED') {
+                                // Add data to reports array
+                                this.reports = [];
+                                this.reports.push(payload.data);
+                                initialState = {
+                                    workspaces: this.workspaces,
+                                    reports: this.reports
+                                };
+                            }
+                            else {
+                                throw Error();
+                            }
+                            return [3 /*break*/, 7];
+                        case 6: throw Error();
+                        case 7: return [3 /*break*/, 9];
+                        case 8:
+                            _a_1 = _b.sent();
+                            msg = ngxComponents.gettext('An error occurred while fetching reports of workspace {{workspaceName}}. Try again.');
+                            this.alertService.danger('workspaceName: ', this.workspaces[0].name);
+                            return [3 /*break*/, 9];
+                        case 9: return [2 /*return*/];
+                    }
+                });
+            });
         };
         return GpPowerbiConfigComponent;
     }());
     GpPowerbiConfigComponent.decorators = [
         { type: core.Component, args: [{
-                    selector: 'lib-gp-powerbi-config',
-                    template: "<div class=\"viewport-modal\">\n    <div class=\"modal-header dialog-header\">\n      <i [c8yIcon]=\"'graph-report'\"></i>\n      <h4>\n        {{'Select report' | translate}}\n      </h4>\n    </div>\n    <div class=\"p-16 text-center separator-bottom\">\n      <p class=\"lead m-0\">{{'Select the workspace you want to access.' | translate }}</p>\n      <p class=\"lead m-0\">{{'Select a report from the selected workspace.' | translate }}</p>\n    </div>\n    <div class=\"modal-inner-scroll\">\n      <div class=\"modal-body\">\n        <form [formGroup]=\"form\">\n          <c8y-form-group>\n            <label for=\"workspace\">\n              {{'Workspace' | translate}}\n            </label>\n            <div class=\"c8y-select-wrapper\">\n              <select formControlName=\"workspace\"\n                      name=\"workspace\"\n                      id=\"workspace\">\n                <option *ngFor=\"let workspace of workspaces\"\n                        [ngValue]=\"workspace\">\n                  {{ workspace.name }}\n                </option>\n              </select>\n            </div>\n          </c8y-form-group>\n          <c8y-form-group>\n            <label for=\"report\">\n              {{'Report' | translate }}\n            </label>\n            <div *ngIf=\"visibleReports?.length === 0 || error || isLoading; else reportsSelect\">\n              <c8y-loading *ngIf=\"isLoading\"></c8y-loading>\n              <em *ngIf=\"!error && !isLoading; else errorMessage\"\n                  translate> No reports available for chosen workspace</em>\n              <ng-template #errorMessage>\n                <div *ngIf=\"error && !isLoading\">\n                  <i [c8yIcon]=\"'warning'\"\n                     class=\"m-r-4 text-danger\"></i>\n                  <em>{{ error }}</em>\n                </div>\n              </ng-template>\n            </div>\n            <ng-template #reportsSelect>\n              <div class=\"c8y-select-wrapper\">\n                <select formControlName=\"report\"\n                        name=\"report\"\n                        id=\"report\">\n                  <option *ngFor=\"let report of visibleReports\"\n                          [ngValue]=\"report\">\n                    {{ report.name }}\n                  </option>\n                </select>\n              </div>\n            </ng-template>\n          </c8y-form-group>\n        </form>\n      </div>\n    </div>\n    <div class=\"modal-footer\">\n      <button class=\"btn btn-default\"\n              (click)=\"close()\">{{ 'Cancel' | translate }}</button>\n      <button [ngClass]=\"{'btn-pending': isLoading}\"\n              class=\"btn btn-primary\"\n              (click)=\"save()\"\n              [disabled]=\"form.invalid\">\n        {{'Select' | translate }}\n      </button>\n    </div>\n  </div>",
-                    styles: [""]
+                    selector: 'gp-powerbi-config',
+                    template: "<div class=\"viewport-modal configSection\">\r\n  <div class='row'>\r\n    <div class=\"col-xs-3 col-md-3\">\r\n      <label for=\"Datahub URL\">\r\n        {{'DataHub URL'}}\r\n      </label>\r\n      <input type=\"text\" [(ngModel)]=\"config.datahubEndPoint\">\r\n    </div>\r\n    <div class=\"col-xs-1 col-md-1 col-lg-1\"></div>\r\n    <div class=\"col-xs-3 col-md-3\">\r\n      <label for=\"Power BI URL\">\r\n        {{'Power BI URL'}}\r\n      </label>\r\n      <input type=\"text\" [(ngModel)]=\"config.powerBIEndPoint\">\r\n    </div>\r\n    <div class=\"col-xs-1 col-md-1 col-lg-1\"></div>\r\n    <div class=\"col-xs-3 col-md-3\">\r\n\r\n      <button (click)=\"setUrlAndGetWorkspace()\" class=\"btn btn-primary\" style=\"margin-top: 24px;\r\n      line-height: 14px;\">\r\n        {{'Fetch Data'}}</button>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n    <div class=\"col-xs-3 col-md-3\">\r\n      <label class=\"c8y-checkbox checkbox-inline\" title=\"isFilterPaneEnabled\">\r\n        <input type=\"checkbox\" value=\"Add Stack\" [(ngModel)]=\"config.isFilterPaneEnabled\"\r\n          >\r\n        <span></span>\r\n        <span>{{'Filter Pane'}}</span>\r\n      </label>\r\n    </div>\r\n    <div class=\"col-xs-1 col-md-1 col-lg-1\"></div>\r\n    <div class=\"col-xs-3 col-md-3\">\r\n      <label class=\"c8y-checkbox checkbox-inline\" title=\"isNavPaneEnabled\">\r\n        <input type=\"checkbox\" value=\"Add Stack\" [(ngModel)]=\"config.isNavPaneEnabled\"\r\n          >\r\n        <span></span>\r\n        <span>{{'Nav Pane'}}</span>\r\n      </label>\r\n    </div>\r\n    \r\n  </div>\r\n  <div class=\"p-16 text-center separator-bottom\">\r\n    <p class=\"lead m-0\">{{'Select the workspace you want to access.' }}</p>\r\n    <p class=\"lead m-0\">{{'Select a report from the selected workspace.' }}</p>\r\n  </div>\r\n  <form [formGroup]=\"form\">\r\n    <c8y-form-group>\r\n      <label for=\"workspace\">\r\n        {{'Workspace'}}\r\n      </label>\r\n      <div class=\"c8y-select-wrapper\">\r\n        <select formControlName=\"workspace\" name=\"workspace\" id=\"workspace\">\r\n          <option *ngFor=\"let workspace of workspaces\" [ngValue]=\"workspace\">\r\n            {{ workspace.name }}\r\n          </option>\r\n        </select>\r\n      </div>\r\n    </c8y-form-group>\r\n    <c8y-form-group>\r\n      <label for=\"report\">\r\n        {{'Report' }}\r\n      </label>\r\n      <div *ngIf=\"visibleReports?.length === 0 || error || isLoading; else reportsSelect\">\r\n        <c8y-loading *ngIf=\"isLoading\"></c8y-loading>\r\n        <em *ngIf=\"!error && !isLoading; else errorMessage\"> No reports available for chosen workspace</em>\r\n        <ng-template #errorMessage>\r\n          <div *ngIf=\"error && !isLoading\">\r\n            <i [c8yIcon]=\"'warning'\" class=\"m-r-4 text-danger\"></i>\r\n            <em>{{ error }}</em>\r\n          </div>\r\n        </ng-template>\r\n      </div>\r\n      <ng-template #reportsSelect>\r\n        <div class=\"c8y-select-wrapper\">\r\n          <select formControlName=\"report\" name=\"report\" id=\"report\">\r\n            <option *ngFor=\"let report of visibleReports\" [ngValue]=\"report\">\r\n              {{ report.name }}\r\n            </option>\r\n          </select>\r\n        </div>\r\n      </ng-template>\r\n    </c8y-form-group>\r\n  </form>\r\n\r\n</div>",
+                    styles: [".configSection{display:grid;border:1px solid rgba(0,0,0,.3);border-radius:4px;margin:.25em;padding:.25em}.row{padding:.5em}"]
                 },] }
     ];
     GpPowerbiConfigComponent.ctorParameters = function () { return [
         { type: PowerBIService },
         { type: forms.FormBuilder },
-        { type: core$1.TranslateService }
+        { type: ngxComponents.AlertService },
+        { type: HttpService }
     ]; };
+    GpPowerbiConfigComponent.propDecorators = {
+        config: [{ type: core.Input }]
+    };
 
+    /**
+     * Copyright (c) 2021 Software AG, Darmstadt, Germany and/or its licensors
+     *
+     * SPDX-License-Identifier: Apache-2.0
+     *
+     * Licensed under the Apache License, Version 2.0 (the "License");
+     * you may not use this file except in compliance with the License.
+     * You may obtain a copy of the License at
+     *
+     *    http://www.apache.org/licenses/LICENSE-2.0
+     *
+     * Unless required by applicable law or agreed to in writing, software
+     * distributed under the License is distributed on an "AS IS" BASIS,
+     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     * See the License for the specific language governing permissions and
+     * limitations under the License.
+     */
     var ɵ0 = {
         id: 'powerbi.widget',
         label: 'Power BI Widget',
@@ -788,26 +1075,38 @@
         { type: core.NgModule, args: [{
                     declarations: [GpPowerbiWidgetComponent, GpPowerbiConfigComponent],
                     imports: [
-                        ngxComponents.CoreModule, collapse.CollapseModule, router.RouterModule, ngxComponents.FormsModule, forms.ReactiveFormsModule,
-                        ngxComponents.ModalModule
+                        ngxComponents.CoreModule, collapse.CollapseModule, router.RouterModule, ngxComponents.FormsModule, forms.ReactiveFormsModule
                     ],
                     providers: [
                         HttpService,
                         PowerBIService,
-                        // BSModalService,
                         {
                             provide: ngxComponents.HOOK_COMPONENTS,
                             multi: true,
                             useValue: ɵ0
                         }
                     ],
-                    exports: [GpPowerbiWidgetComponent],
-                    entryComponents: [GpPowerbiWidgetComponent]
+                    exports: [GpPowerbiWidgetComponent, GpPowerbiConfigComponent],
+                    entryComponents: [GpPowerbiWidgetComponent, GpPowerbiConfigComponent]
                 },] }
     ];
 
-    /*
-     * Public API Surface of gp-powerbi-widget
+    /**
+     * Copyright (c) 2021 Software AG, Darmstadt, Germany and/or its licensors
+     *
+     * SPDX-License-Identifier: Apache-2.0
+     *
+     * Licensed under the Apache License, Version 2.0 (the "License");
+     * you may not use this file except in compliance with the License.
+     * You may obtain a copy of the License at
+     *
+     *    http://www.apache.org/licenses/LICENSE-2.0
+     *
+     * Unless required by applicable law or agreed to in writing, software
+     * distributed under the License is distributed on an "AS IS" BASIS,
+     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     * See the License for the specific language governing permissions and
+     * limitations under the License.
      */
 
     /**

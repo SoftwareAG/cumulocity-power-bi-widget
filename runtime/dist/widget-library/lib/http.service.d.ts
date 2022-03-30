@@ -1,10 +1,8 @@
 import { FetchClient, IFetchResponse } from '@c8y/client';
-import { OptionsService } from '@c8y/ngx-components';
 export declare class HttpService {
     private fetchClient;
-    private optionsService;
-    private path;
-    constructor(fetchClient: FetchClient, optionsService: OptionsService);
+    path: string;
+    constructor(fetchClient: FetchClient);
     Get<T>(endPoint: string, params?: object, headers?: {
         accept: string;
     }): Promise<IFetchResponse>;
