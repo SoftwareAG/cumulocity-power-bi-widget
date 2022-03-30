@@ -140,7 +140,7 @@ npm i <binary file path>/gp-powerbi-widget-1.0.0.tgz
 
   
 
-4. Import GpSmartEchartWidgetModulein custom-widget.module.ts file located at /cumulocity-app-builder/custom-widgets/
+4. Import GpPowerbitWidgetModule in custom-widget.module.ts file located at /cumulocity-app-builder/custom-widgets/
 
   
 
@@ -401,7 +401,7 @@ This guide will teach you how to add widget in your existing or new dashboard.
   
   
 
-Congratulations! Smart E Chart is configured.
+Congratulations! Power BI is configured.
 
   
 
