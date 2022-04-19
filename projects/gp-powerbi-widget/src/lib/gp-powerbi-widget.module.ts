@@ -24,7 +24,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { GpPowerbiConfigComponent } from './gp-powerbi-config/gp-powerbi-config.component';
-
+import * as preview from './preview-image';
 
 @NgModule({
   declarations: [GpPowerbiWidgetComponent, GpPowerbiConfigComponent],
@@ -40,7 +40,8 @@ import { GpPowerbiConfigComponent } from './gp-powerbi-config/gp-powerbi-config.
       useValue: {
         id: 'powerbi.widget',
         label: 'Power BI Widget',
-        description: 'Power BI Widget',
+        description: 'Display Power BI Reports created from DataHub',
+        previewImage: preview.previewImage,
         component: GpPowerbiWidgetComponent,
         configComponent: GpPowerbiConfigComponent,
         data: {

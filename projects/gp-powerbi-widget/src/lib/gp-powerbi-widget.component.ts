@@ -36,20 +36,21 @@ export class GpPowerbiWidgetComponent implements OnInit, OnChanges {
   @ViewChild('reportContainer', { static: true }) reportContainer: ElementRef;
   embeddingInfo: EmbeddingInfo;
   reportName: string;
-  workspaceID ;
-  reportID ;
+  workspaceID;
+  reportID;
   @Input() config;
   public workspaces: PowerBIWorkspace[] = [];
   public settingsNotDefined = false;
   public isLoading = false;
-  private readonly embedUrl = 'https://app.powerbi.com/reportEmbed';
+  embedUrl = 'https://app.powerbi.com/reportEmbed';
   embeddedReport: any;
   reportToDisplay: { id: string; workspaceId: string; token: any; name: any; };
   constructor(
     private powerbiService: PowerBIService,
     private alertService: AlertService,
     private http: HttpService,
-  ) {}
+  ) {
+  }
   // When changes are pushed from host component to report component, component is reinitialized to show a different report.
   // This may not be needed in customer scenario
   async ngOnChanges(changes: SimpleChanges): Promise<void> {
@@ -58,18 +59,22 @@ export class GpPowerbiWidgetComponent implements OnInit, OnChanges {
     }
   }
   async ngOnInit(): Promise<void> {
-    try{
+    try {
+      if (this.config.embedEndPoint === null || this.config.embedEndPoint === undefined) {
+        this.embedUrl = 'https://app.powerbi.com/reportEmbed';
+      } else {
+        this.embedUrl = this.config.embedEndPoint;
+      }
       this.http.path = this.config.datahubEndPoint;
       this.powerbiService.path = this.config.powerBIEndPoint;
       await this.loadReport(this.config);
-    } catch (e){
+    } catch (e) {
       this.alertService.danger('Failed to load report.');
     }
     try {
       // tslint:disable-next-line:max-line-length
       this.embedReport(this.embeddingInfo.reportId, this.embeddingInfo.embeddingToken, this.config.isFilterPaneEnabled, this.config.isNavPaneEnabled);
     } catch (e) {
-      // this.alertService.danger('Failed to fetch embedding token.');
       this.alertService.danger('Failed to fetch embedding token.');
     }
   }
@@ -83,7 +88,7 @@ export class GpPowerbiWidgetComponent implements OnInit, OnChanges {
       accessToken: token,
       // permissions: pbi.models.Permissions.Read,
       settings: {
-      // The option is called filterPaneEnabled, there is a typo in the method parameter name
+        // The option is called filterPaneEnabled, there is a typo in the method parameter name
         filterPaneEnabled: filterPanelEnabled,
         // Same as filterPaneEnabled
         navContentPaneEnabled: navPanelEnabled,
@@ -100,7 +105,7 @@ export class GpPowerbiWidgetComponent implements OnInit, OnChanges {
   }
   // Load the report based on worspace selected
   // sets the report ID and token
-  private async loadReport(config): Promise<any>{
+  private async loadReport(config): Promise<any> {
     this.workspaceID = this.config.workspaceSelected.id;
     this.reportID = this.config.reportSelected.id;
     this.reportName = this.config.reportSelected.name;
