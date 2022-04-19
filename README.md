@@ -419,8 +419,9 @@ Congratulations! Power BI is configured.
   
 
 -  **PowerBI URL :** User can specify Power BI URL if needed or use default.
+-  **Embed URL :** User can specify Embed Report if needed(in case it has been updated on Power BI) or use default.
 
--  **Fetch Data :** In case user changes DataHub or Power BI URL then they need to click this button to make a call to power BI and get the workspace and reports available if any. If the path is wrong, error will be shown.
+-  **Load Workspace :** In case user changes DataHub or Power BI URL then they need to click this button to make a call to power BI and get the workspace and reports available if any. If the path is wrong, error will be shown.
 -  **Nav Pane :** To show Navigation Pane in Power BI Report or not. This comes from Power BI and is used if your workspace has more than one report in same page.
 -  **Filter Pane :** To show the Filter Pane in Power BI report or not. This comes from Power BI and can be used to see runtime changes in report based on filter applied.
 
