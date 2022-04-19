@@ -1,5 +1,5 @@
 {
-  "name": "cumulocity-powerbi-widget",
+  "name": "gp-powerbi-widget",
   "version": "1.0.0",
   "description": "This is an Angular 11 widget, which is designed to display the PowerBI reports created from Datahub offloading.",
   "author": "Neeru Arora - Software AG, Global Presales",

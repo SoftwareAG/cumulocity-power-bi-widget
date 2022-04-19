@@ -36,7 +36,6 @@ export declare class GpPowerbiConfigComponent implements OnInit {
     visibleReports: PowerBIReports;
     form: FormGroup;
     isLoading: boolean;
-    testUrl: string;
     onClose: Subject<PowerBIReportModalResult>;
     modalResult: PowerBIReportModalResult;
     error: string;

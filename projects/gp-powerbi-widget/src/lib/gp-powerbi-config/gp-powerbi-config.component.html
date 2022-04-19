@@ -13,12 +13,19 @@
       </label>
       <input type="text" [(ngModel)]="config.powerBIEndPoint">
     </div>
+  </div>
+  <div class='row'>
+    <div class="col-xs-3 col-md-3">
+      <label for="Embed URL">
+        {{'Embed URL'}}
+      </label>
+      <input type="text" [(ngModel)]="config.embedEndPoint">
+    </div>
     <div class="col-xs-1 col-md-1 col-lg-1"></div>
     <div class="col-xs-3 col-md-3">
-
       <button (click)="setUrlAndGetWorkspace()" class="btn btn-primary" style="margin-top: 24px;
       line-height: 14px;">
-        {{'Fetch Data'}}</button>
+        {{'Load Workspace'}}</button>
     </div>
   </div>
   <div class="row">
@@ -41,9 +48,8 @@
     </div>
     
   </div>
-  <div class="p-16 text-center separator-bottom">
-    <p class="lead m-0">{{'Select the workspace you want to access.' }}</p>
-    <p class="lead m-0">{{'Select a report from the selected workspace.' }}</p>
+  <div class="p-5 separator-bottom">
+    <p class="lead m-0">{{'Select Workspace and Report.' }}</p>
   </div>
   <form [formGroup]="form">
     <c8y-form-group>

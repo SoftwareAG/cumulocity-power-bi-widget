@@ -34,7 +34,7 @@ export declare class GpPowerbiWidgetComponent implements OnInit, OnChanges {
     workspaces: PowerBIWorkspace[];
     settingsNotDefined: boolean;
     isLoading: boolean;
-    private readonly embedUrl;
+    embedUrl: string;
     embeddedReport: any;
     reportToDisplay: {
         id: string;

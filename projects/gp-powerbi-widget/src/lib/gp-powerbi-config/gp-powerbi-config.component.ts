@@ -20,7 +20,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertService, gettext } from '@c8y/ngx-components';
 import { Subject } from 'rxjs';
 import { HttpService } from '../http.service';
-import { EmbeddingInfo, PowerBIReportModalResult, PowerBIReports, PowerBIWorkspace } from '../powerbi.interface';
+import { PowerBIReportModalResult, PowerBIReports, PowerBIWorkspace } from '../powerbi.interface';
 import { PowerBIService } from '../powerbi.service';
 @Component({
   selector: 'gp-powerbi-config',
@@ -30,7 +30,8 @@ import { PowerBIService } from '../powerbi.service';
 export class GpPowerbiConfigComponent implements OnInit {
   @Input() config: any = {
     powerBIEndPoint: '',
-    datahubEndPoint: ''
+    datahubEndPoint: '',
+    embedEndPoint: ''
   };
   public isFilterPaneEnabled = false;
   public isNavPaneEnabled = false;
@@ -40,7 +41,6 @@ export class GpPowerbiConfigComponent implements OnInit {
   public visibleReports: PowerBIReports;
   public form: FormGroup;
   public isLoading = false;
-  testUrl = 'hello';
   public onClose: Subject<PowerBIReportModalResult> = new Subject<PowerBIReportModalResult>();
   public modalResult: PowerBIReportModalResult = {
     workspaceId: null,
@@ -59,18 +59,23 @@ export class GpPowerbiConfigComponent implements OnInit {
     });
   }
   async ngOnInit(): Promise<void> {
-    if (!this.config.isNavPaneEnabled){
+    if (!this.config.isNavPaneEnabled) {
       this.config.isNavPaneEnabled = false;
     }
-    if (this.config.powerBIEndPoint === '') {
+    if (this.config.powerBIEndPoint === '' || this.config.powerBIEndPoint === undefined) {
       this.config.powerBIEndPoint = '/powerbi';
     } else {
       if (isDevMode()) { console.log(this.config.powerBIEndPoint); }
     }
-    if (this.config.datahubEndPoint === '') {
+    if (this.config.datahubEndPoint === '' || this.config.datahubEndPoint === undefined) {
       this.config.datahubEndPoint = '/service/datahub';
     } else {
       if (isDevMode()) { console.log(this.config.datahubEndPoint); }
+    }
+    if (this.config.embedEndPoint === '' || this.config.embedEndPoint === undefined) {
+      this.config.embedEndPoint = 'https://app.powerbi.com/reportEmbed';
+    } else {
+      if (isDevMode()) { console.log(this.config.embedEndPoint); }
     }
     if (this.config.datahubEndPoint !== '/service/datahub' || this.config.powerBIEndPoint !== '/powerbi') {
       this.setUrlAndGetWorkspace();
@@ -120,20 +125,28 @@ export class GpPowerbiConfigComponent implements OnInit {
     }
   }
   extractWorkspaceIndex(): number {
-    const workspaceIndex = this.workspaces.findIndex((workspace) =>
-      workspace.id === this.config.workspaceSelected.id
-    );
-    return workspaceIndex;
+    if (this.config.workspaceSelected !== undefined) {
+      const workspaceIndex = this.workspaces.findIndex((workspace) =>
+        workspace.id === this.config.workspaceSelected.id
+      );
+      return workspaceIndex;
+    } else {
+      return 0;
+    }
   }
   extractReportIndex(): number {
-    const reportIndex = this.reports[0].findIndex((report, index) => {
-      if (report.id === this.config.reportSelected.id) {
-        return 1;
-      } else {
-        if (isDevMode()) {console.log('no matching in reports'); }
-      }
-    });
-    return reportIndex;
+    if (this.config.reportSelected !== undefined) {
+      const reportIndex = this.reports[0].findIndex((report, index) => {
+        if (report.id === this.config.reportSelected.id) {
+          return 1;
+        } else {
+          if (isDevMode()) { console.log('no matching in reports'); }
+        }
+      });
+      return reportIndex;
+    } else {
+      return 0;
+    }
   }
   // Show the selected value in form and update the values selected in config
   // workspace and report
