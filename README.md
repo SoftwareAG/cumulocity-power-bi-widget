@@ -1,5 +1,5 @@
 
-# Power BI Widget for Cumulocity [<img width="35" src="https://user-images.githubusercontent.com/67993842/97668428-f360cc80-1aa7-11eb-8801-da578bda4334.png"/>](https://github.com/SoftwareAG/cumulocity-smart-echart-widget/releases/download/v1.0.0/smart-echart-runtime-widget-1.0.0.zip)
+# Power BI Widget for Cumulocity [<img width="35" src="https://user-images.githubusercontent.com/67993842/97668428-f360cc80-1aa7-11eb-8801-da578bda4334.png"/>](https://github.com/SoftwareAG/cumulocity-power-bi-widget/releases/download/v1.0.0/powerbi-runtime-widget-1.0.0.zip)
 
   
 
@@ -46,7 +46,7 @@ The Power BI widget help you to display reports created from data offloaded from
 
   
 
-* This widget support runtime deployment. Download [Runtime Binary](https://github.com/SoftwareAG/cumulocity-smart-echart-widget/releases/download/v1.0.0/smart-echart-runtime-widget-1.0.0.zip) and use Application-builder to install your widget.
+* This widget support runtime deployment. Download [Runtime Binary](https://github.com/SoftwareAG/cumulocity-power-bi-widget/releases/download/v1.0.0/powerbi-runtime-widget-1.0.0.zip) and use Application-builder to install your widget.
 
   
 
@@ -107,7 +107,7 @@ The Power BI widget help you to display reports created from data offloaded from
 npm i powerbi-client@^2.19.1
 ```
 
-2. Grab the Power BI Widget **[Latest Release Binary](https://github.com/SoftwareAG/cumulocity-smart-echart-widget/releases/download/v1.0.0/gp-smart-echart-widget-1.0.0.tgz)**.
+2. Grab the Power BI Widget **[Latest Release Binary](https://github.com/SoftwareAG/cumulocity-power-bi-widget/releases/download/v1.0.0/gp-powerbi-widget-1.0.0.tgz)**.
 
   
   
