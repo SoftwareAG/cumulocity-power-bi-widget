@@ -18,7 +18,6 @@
 import { Injectable } from '@angular/core';
 import { IFetchResponse } from '@c8y/client';
 import { HttpService } from './http.service';
-// import { PowerBIReports, PowerBISettings } from '@model/interfaces/powerbi.interface';
 import { PowerBIReports, PowerBISettings } from './powerbi.interface';
 export type CachedPowerBIInfo = {
   reports: PowerBIReports;
