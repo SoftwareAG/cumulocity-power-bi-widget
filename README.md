@@ -14,12 +14,9 @@ The Power BI widget help you to display reports created from data offloaded from
 ### Please verify that you are using below Application builder version:
 
   
-
-|APPLICATION BUILDER | CUMULOCITY | Power BI WIDGET |
-
+|APPLICATION BUILDER | CUMULOCITY | POWER BI WIDGET    |
 |--------------------|------------|------------------------|
-
-| 1.3.x | >= 1011.x.x| 1.x.x |
+| 1.3.x              | >= 1011.x.x| 1.x.x                  |
 
   
   
@@ -28,16 +25,15 @@ The Power BI widget help you to display reports created from data offloaded from
 ## Features
 
   
+*  **DataHub Integration :** Seamless data visualization from DataHub using PowerBI workspace and report selection.
 
-*  **Workspace Selection:** Select the workspace
+*  **PowerBI Configuration:** Ability to configure various PowerBI report options.
 
-  
+*  **Workspace Selection:** Ability to select the workspace.
 
 *  **Reports:** Select the respective report from list of available reports under the workspace selected.
 
-  
 
-*  **Configurable URL:** Specify custom URL for DataHub and Power BI if needed.
 
   
   
@@ -87,13 +83,7 @@ The Power BI widget help you to display reports created from data offloaded from
   
 
 ```
-
-  
-
 "@powerbi-client": "^2.19.1",
-
-  
-
 ```
 
   
@@ -114,11 +104,7 @@ The Power BI widget help you to display reports created from data offloaded from
   
 
 ```
-
-  
-
 npm i powerbi-client@^2.19.1
-
 ```
 
 2. Grab the Power BI Widget **[Latest Release Binary](https://github.com/SoftwareAG/cumulocity-smart-echart-widget/releases/download/v1.0.0/gp-smart-echart-widget-1.0.0.tgz)**.
@@ -131,11 +117,7 @@ npm i powerbi-client@^2.19.1
   
 
 ```
-
 npm i <binary file path>/gp-powerbi-widget-1.0.0.tgz
-
-  
-
 ```
 
   
@@ -145,33 +127,12 @@ npm i <binary file path>/gp-powerbi-widget-1.0.0.tgz
   
 
 ```
-
-  
-
 import {GpPowerbiWidgetModule} from 'gp-powerbi-widget.module';
-
-  
-
 @NgModule({
-
-  
-
 imports: [
-
-  
-
 GpPowerbiWidgetModule
-
-  
-
 ]
-
-  
-
 })
-
-  
-
 ```
 
   
@@ -181,36 +142,14 @@ GpPowerbiWidgetModule
   
 
 ```
-
-  
-
 //Start App Builder
-
-  
-
 npm run start
 
-  
-
-// Build App
-
-  
-  
-
+// Build App 
 npm run build
-
   
-  
-
 // Deploy App
-
-  
-  
-
 npm run deploy
-
-  
-
 ```
 
   
@@ -247,13 +186,7 @@ npm run deploy
   
 
 ```
-
-  
-
 git clone https://github.com/SoftwareAG/cumulocity-powerbi-widget.git
-
-  
-
 ```
 
   
@@ -263,13 +196,7 @@ git clone https://github.com/SoftwareAG/cumulocity-powerbi-widget.git
   
 
 ```
-
-  
-
 cd cumulocity-powerbi-widget
-
-  
-
 ```
 
   
@@ -279,13 +206,7 @@ cd cumulocity-powerbi-widget
   
 
 ```
-
-  
-
 git checkout <your version>
-
-  
-
 ```
 
   
@@ -295,13 +216,7 @@ git checkout <your version>
   
 
 ```
-
-  
-
 npm install
-
-  
-
 ```
 
   
@@ -311,13 +226,7 @@ npm install
   
 
 ```
-
-  
-
 npm run start
-
-  
-
 ```
 
   
@@ -327,13 +236,7 @@ npm run start
   
 
 ```
-
-  
-
 npm run build
-
-  
-
 ```
 
   
@@ -343,13 +246,7 @@ npm run build
   
 
 ```
-
-  
-
 npm run deploy
-
-  
-
 ```
 
   
@@ -414,9 +311,6 @@ Congratulations! Power BI is configured.
   
 
 -  **DataHub URL :** User can specify DataHub URL if needed or use default.
-
-  
-  
 
 -  **PowerBI URL :** User can specify Power BI URL if needed or use default.
 -  **Embed URL :** User can specify Embed Report if needed(in case it has been updated on Power BI) or use default.
