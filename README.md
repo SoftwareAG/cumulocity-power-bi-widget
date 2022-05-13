@@ -3,7 +3,7 @@
 
   
 
-The Power BI widget help you to display reports created from data offloaded from dataHub seamlessly in application.
+The Power BI widget help you to display reports created from data offloaded from DataHub seamlessly in application.
 
   
 
@@ -34,13 +34,18 @@ The Power BI widget help you to display reports created from data offloaded from
 *  **Reports:** Select the respective report from list of available reports under the workspace selected.
 
 
+## Prerequisite
+   * DataHub should be subscribed, configured and installed in the tenant.
+   * Reports should be created in PowerBI and you should have connection for PowerBI configured in DataHub.
 
-  
-  
+* Minimum Permission needed:
+DataHub_Manager
+
+* For more information on DataHub,click here:
+https://cumulocity.com/guides/datahub/datahub-overview/ 
 
 ## Installation
 
-  
 
 ### Runtime Widget Deployment?
 
