@@ -6,9 +6,10 @@
 The Power BI widget help you to display reports created from data offloaded from DataHub seamlessly in application.
 
   
-
-![PowerBI](https://user-images.githubusercontent.com/85675121/160342325-b13f713e-dacb-4922-9011-81e6bd60f1cc.PNG)
 ![Power_BI](https://user-images.githubusercontent.com/99970126/181720578-e55d7911-bad6-4932-a27c-14232d1647b3.png)
+
+![Power_BI_Config](https://user-images.githubusercontent.com/99970126/181721134-5517d55a-56fe-4eff-8073-37e3559914b2.png)
+
 
 
   
