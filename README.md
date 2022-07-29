@@ -8,6 +8,8 @@ The Power BI widget help you to display reports created from data offloaded from
   
 
 ![PowerBI](https://user-images.githubusercontent.com/85675121/160342325-b13f713e-dacb-4922-9011-81e6bd60f1cc.PNG)
+![Power_BI](https://user-images.githubusercontent.com/99970126/181720578-e55d7911-bad6-4932-a27c-14232d1647b3.png)
+
 
   
 
