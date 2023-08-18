@@ -11,6 +11,7 @@ The Power BI widget help you to display reports created from data offloaded from
 ![Power_BI_Config](https://user-images.githubusercontent.com/99970126/181721134-5517d55a-56fe-4eff-8073-37e3559914b2.png)
 
 
+> ### ⚠️ This project is no longer under development. Please use [Power BI Widget Plugin](https://github.com/SoftwareAG/cumulocity-power-bi-widget-plugin) for Application Builder >=2.x.x and Cumulocity >=1016.x.x⚠️
 
   
 
